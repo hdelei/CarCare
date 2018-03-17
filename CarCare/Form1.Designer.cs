@@ -51,7 +51,15 @@
             this.menuVehicleEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRecentVehicle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novovazioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.novobaseadoNoAtualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.gbDetails = new System.Windows.Forms.GroupBox();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.lblStatusHeader = new System.Windows.Forms.Label();
             this.lblMissKm = new System.Windows.Forms.Label();
             this.lblMissDays = new System.Windows.Forms.Label();
             this.tbNextKm = new System.Windows.Forms.TextBox();
@@ -69,14 +77,6 @@
             this.tbNextDate = new System.Windows.Forms.MaskedTextBox();
             this.tbDate = new System.Windows.Forms.MaskedTextBox();
             this.lblDescription = new System.Windows.Forms.TextBox();
-            this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novovazioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novobaseadoNoAtualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblStatusHeader = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.gbVehicle.SuspendLayout();
             this.menuBar.SuspendLayout();
@@ -267,26 +267,70 @@
             // menuVehicleOpen
             // 
             this.menuVehicleOpen.Name = "menuVehicleOpen";
-            this.menuVehicleOpen.Size = new System.Drawing.Size(152, 22);
+            this.menuVehicleOpen.Size = new System.Drawing.Size(130, 22);
             this.menuVehicleOpen.Text = "Abrir";
             // 
             // menuVehicleEdit
             // 
             this.menuVehicleEdit.Name = "menuVehicleEdit";
-            this.menuVehicleEdit.Size = new System.Drawing.Size(152, 22);
+            this.menuVehicleEdit.Size = new System.Drawing.Size(130, 22);
             this.menuVehicleEdit.Text = "Editar";
             // 
             // menuRecentVehicle
             // 
             this.menuRecentVehicle.Name = "menuRecentVehicle";
-            this.menuRecentVehicle.Size = new System.Drawing.Size(152, 22);
+            this.menuRecentVehicle.Size = new System.Drawing.Size(130, 22);
             this.menuRecentVehicle.Text = "Recentes";
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(152, 22);
+            this.menuExit.Size = new System.Drawing.Size(130, 22);
             this.menuExit.Text = "Sair";
+            // 
+            // serviçoToolStripMenuItem
+            // 
+            this.serviçoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novovazioToolStripMenuItem,
+            this.novobaseadoNoAtualToolStripMenuItem,
+            this.editarToolStripMenuItem,
+            this.excluirToolStripMenuItem});
+            this.serviçoToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serviçoToolStripMenuItem.Name = "serviçoToolStripMenuItem";
+            this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.serviçoToolStripMenuItem.Text = "Serviço";
+            // 
+            // novovazioToolStripMenuItem
+            // 
+            this.novovazioToolStripMenuItem.Name = "novovazioToolStripMenuItem";
+            this.novovazioToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.novovazioToolStripMenuItem.Text = "Novo (vazio)";
+            // 
+            // novobaseadoNoAtualToolStripMenuItem
+            // 
+            this.novobaseadoNoAtualToolStripMenuItem.Name = "novobaseadoNoAtualToolStripMenuItem";
+            this.novobaseadoNoAtualToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.novobaseadoNoAtualToolStripMenuItem.Text = "Novo (baseado no atual)";
+            // 
+            // editarToolStripMenuItem
+            // 
+            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.editarToolStripMenuItem.Text = "Editar";
+            // 
+            // excluirToolStripMenuItem
+            // 
+            this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.excluirToolStripMenuItem.Text = "Excluir";
+            // 
+            // menuHelp
+            // 
+            this.menuHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.menuHelp.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuHelp.Name = "menuHelp";
+            this.menuHelp.Size = new System.Drawing.Size(54, 20);
+            this.menuHelp.Text = "Ajuda";
             // 
             // gbDetails
             // 
@@ -317,6 +361,24 @@
             this.gbDetails.TabIndex = 3;
             this.gbDetails.TabStop = false;
             this.gbDetails.Text = "Serviço";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(69, 204);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(77, 14);
+            this.lblStatus.TabIndex = 10;
+            this.lblStatus.Text = "sem status";
+            // 
+            // lblStatusHeader
+            // 
+            this.lblStatusHeader.AutoSize = true;
+            this.lblStatusHeader.Location = new System.Drawing.Point(10, 204);
+            this.lblStatusHeader.Name = "lblStatusHeader";
+            this.lblStatusHeader.Size = new System.Drawing.Size(56, 14);
+            this.lblStatusHeader.TabIndex = 9;
+            this.lblStatusHeader.Text = "status:";
             // 
             // lblMissKm
             // 
@@ -475,68 +537,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(494, 75);
             this.lblDescription.TabIndex = 0;
-            // 
-            // serviçoToolStripMenuItem
-            // 
-            this.serviçoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novovazioToolStripMenuItem,
-            this.novobaseadoNoAtualToolStripMenuItem,
-            this.editarToolStripMenuItem,
-            this.excluirToolStripMenuItem});
-            this.serviçoToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serviçoToolStripMenuItem.Name = "serviçoToolStripMenuItem";
-            this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.serviçoToolStripMenuItem.Text = "Serviço";
-            // 
-            // novovazioToolStripMenuItem
-            // 
-            this.novovazioToolStripMenuItem.Name = "novovazioToolStripMenuItem";
-            this.novovazioToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.novovazioToolStripMenuItem.Text = "Novo (vazio)";
-            // 
-            // novobaseadoNoAtualToolStripMenuItem
-            // 
-            this.novobaseadoNoAtualToolStripMenuItem.Name = "novobaseadoNoAtualToolStripMenuItem";
-            this.novobaseadoNoAtualToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.novobaseadoNoAtualToolStripMenuItem.Text = "Novo (baseado no atual)";
-            // 
-            // editarToolStripMenuItem
-            // 
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.editarToolStripMenuItem.Text = "Editar";
-            // 
-            // excluirToolStripMenuItem
-            // 
-            this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.excluirToolStripMenuItem.Text = "Excluir";
-            // 
-            // menuHelp
-            // 
-            this.menuHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.menuHelp.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(54, 20);
-            this.menuHelp.Text = "Ajuda";
-            // 
-            // lblStatusHeader
-            // 
-            this.lblStatusHeader.AutoSize = true;
-            this.lblStatusHeader.Location = new System.Drawing.Point(10, 204);
-            this.lblStatusHeader.Name = "lblStatusHeader";
-            this.lblStatusHeader.Size = new System.Drawing.Size(56, 14);
-            this.lblStatusHeader.TabIndex = 9;
-            this.lblStatusHeader.Text = "status:";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(69, 204);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(77, 14);
-            this.lblStatus.TabIndex = 10;
-            this.lblStatus.Text = "sem status";
+            this.lblDescription.Text = "test";
             // 
             // Form1
             // 
