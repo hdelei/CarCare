@@ -154,7 +154,6 @@
             this.gbVehicle.TabIndex = 1;
             this.gbVehicle.TabStop = false;
             this.gbVehicle.Text = "Tipo do veículo";
-            this.gbVehicle.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lblPlate
             // 
@@ -537,7 +536,6 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(494, 75);
             this.lblDescription.TabIndex = 0;
-            this.lblDescription.Text = "test";
             // 
             // Form1
             // 
@@ -552,7 +550,6 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.gbVehicle.ResumeLayout(false);
             this.gbVehicle.PerformLayout();
