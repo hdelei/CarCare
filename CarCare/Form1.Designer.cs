@@ -44,7 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblMaker = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.lblVehicle = new System.Windows.Forms.Label();
+            this.lblModel = new System.Windows.Forms.Label();
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.menuVehicle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVehicleOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +76,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tbNextDate = new System.Windows.Forms.MaskedTextBox();
             this.tbDate = new System.Windows.Forms.MaskedTextBox();
-            this.lblDescription = new System.Windows.Forms.TextBox();
+            this.tbDescription = new System.Windows.Forms.TextBox();
+            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.gbVehicle.SuspendLayout();
             this.menuBar.SuspendLayout();
@@ -145,7 +146,7 @@
             this.gbVehicle.Controls.Add(this.label5);
             this.gbVehicle.Controls.Add(this.lblMaker);
             this.gbVehicle.Controls.Add(this.label4);
-            this.gbVehicle.Controls.Add(this.lblVehicle);
+            this.gbVehicle.Controls.Add(this.lblModel);
             this.gbVehicle.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbVehicle.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbVehicle.Location = new System.Drawing.Point(13, 36);
@@ -225,15 +226,15 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Modelo:";
             // 
-            // lblVehicle
+            // lblModel
             // 
-            this.lblVehicle.AutoSize = true;
-            this.lblVehicle.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblVehicle.Location = new System.Drawing.Point(97, 21);
-            this.lblVehicle.Name = "lblVehicle";
-            this.lblVehicle.Size = new System.Drawing.Size(49, 14);
-            this.lblVehicle.TabIndex = 0;
-            this.lblVehicle.Text = "Camaro";
+            this.lblModel.AutoSize = true;
+            this.lblModel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblModel.Location = new System.Drawing.Point(97, 21);
+            this.lblModel.Name = "lblModel";
+            this.lblModel.Size = new System.Drawing.Size(49, 14);
+            this.lblModel.TabIndex = 0;
+            this.lblModel.Text = "Camaro";
             // 
             // menuBar
             // 
@@ -252,6 +253,7 @@
             // menuVehicle
             // 
             this.menuVehicle.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripMenuItem,
             this.menuVehicleOpen,
             this.menuVehicleEdit,
             this.menuRecentVehicle,
@@ -260,8 +262,8 @@
             this.menuVehicle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.menuVehicle.Name = "menuVehicle";
             this.menuVehicle.ShortcutKeyDisplayString = "Alt";
-            this.menuVehicle.Size = new System.Drawing.Size(75, 20);
-            this.menuVehicle.Text = "Veículos";
+            this.menuVehicle.Size = new System.Drawing.Size(68, 20);
+            this.menuVehicle.Text = "Veículo";
             // 
             // menuVehicleOpen
             // 
@@ -351,7 +353,7 @@
             this.gbDetails.Controls.Add(this.label9);
             this.gbDetails.Controls.Add(this.tbNextDate);
             this.gbDetails.Controls.Add(this.tbDate);
-            this.gbDetails.Controls.Add(this.lblDescription);
+            this.gbDetails.Controls.Add(this.tbDescription);
             this.gbDetails.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDetails.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.gbDetails.Location = new System.Drawing.Point(306, 36);
@@ -529,13 +531,19 @@
             this.tbDate.TabIndex = 1;
             this.tbDate.ValidatingType = typeof(System.DateTime);
             // 
-            // lblDescription
+            // tbDescription
             // 
-            this.lblDescription.Location = new System.Drawing.Point(7, 18);
-            this.lblDescription.Multiline = true;
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(494, 75);
-            this.lblDescription.TabIndex = 0;
+            this.tbDescription.Location = new System.Drawing.Point(7, 18);
+            this.tbDescription.Multiline = true;
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.Size = new System.Drawing.Size(494, 75);
+            this.tbDescription.TabIndex = 0;
+            // 
+            // novoToolStripMenuItem
+            // 
+            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.novoToolStripMenuItem.Text = "Novo";
             // 
             // Form1
             // 
@@ -550,6 +558,7 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.gbVehicle.ResumeLayout(false);
             this.gbVehicle.PerformLayout();
@@ -584,11 +593,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblMaker;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblVehicle;
+        private System.Windows.Forms.Label lblModel;
         private System.Windows.Forms.ToolStripMenuItem menuVehicleEdit;
         private System.Windows.Forms.Label lblPlate;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox lblDescription;
+        private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.MaskedTextBox tbDate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblMinusDate;
@@ -613,6 +622,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuHelp;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblStatusHeader;
+        private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
     }
 }
 
