@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarCare.Controller;
+using CarCare.Model;
 
 namespace CarCare
 {
@@ -47,8 +48,24 @@ namespace CarCare
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //txt.ExecuteCommand(1, 1);
+            
             RenderVehicleAndService();
+            
+            DataTable dt = txt.RetrieveData(2);
+            dgvMain.Columns.Clear();
+            dgvMain.DataSource = dt;
+
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //    foreach (DataColumn col in dt.Columns)
+            //    {
+            //        Console.WriteLine(row[col]);
+            //    }
+                
+            //}
+
+            
+            
         }
 
         private void RenderVehicleAndService()
