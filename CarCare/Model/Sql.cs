@@ -18,15 +18,20 @@ namespace CarCare.Model
             this.dict = dict;
         }
 
-        public DataTable Select()
+        public DataTable SelectVehicle()
         {            
-            String query = @"SELECT * FROM " + dict["table"] + " LIMIT 30;";
+            String query = @"SELECT * FROM Vehicle WHERE id = "+ dict["id"] +";";
             Connection conn = new Connection();
             conn.Execute(query);
-            return conn.DtTable;
+            return conn.DtTable;            
+        }
 
-            //Console.WriteLine(conn.Execute(query));
-            //Console.WriteLine(conn.DtTable.Rows[0][2].ToString());
+        public DataTable SelectServices()
+        {
+            String query = @"SELECT * FROM Service WHERE vehicleID = " + dict["id"] + ";";
+            Connection conn = new Connection();
+            conn.Execute(query);
+            return conn.DtTable;            
         }
 
         public int Update()

@@ -35,10 +35,10 @@ namespace CarCare
                     SQLiteConnection m_dbConnection;
                     m_dbConnection = new SQLiteConnection("Data Source=CarCare.db;Version=3;");
                     m_dbConnection.Open();
-                    string sql = createQuery();
+                    string sql = CreateQuery();
                     SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
                     command.ExecuteNonQuery();
-                    sql = insertQuery();
+                    sql = InsertQuery();
                     command = new SQLiteCommand(sql, m_dbConnection);
                     command.ExecuteNonQuery();
                     m_dbConnection.Close();
@@ -59,7 +59,7 @@ namespace CarCare
         /// Método auxiliar que organiza a query de criação das tabelas
         /// </summary>
         /// <returns>Retorna a query pronta para o BD</returns>
-        private static string createQuery()
+        private static string CreateQuery()
         {
             string query = @"CREATE TABLE          Vehicle (
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -87,7 +87,7 @@ namespace CarCare
         /// Método auxiliar que organiza a query de criação das tabelas
         /// </summary>
         /// <returns>Retorna a query pronta para o BD</returns>
-        private static string insertQuery()
+        private static string InsertQuery()
         {
             string query = @"
                    INSERT INTO Vehicle

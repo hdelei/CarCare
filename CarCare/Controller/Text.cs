@@ -24,7 +24,7 @@ namespace CarCare.Controller
         {
             { "type", "Carro" },
             { "model", "Grand Siena" },
-            { "maker", "Fiat" },
+            { "manufacturer", "Fiat" },
             { "year", "2014" },
             { "plate", "FMH0842" },
             { "id", "1" },
@@ -84,29 +84,35 @@ namespace CarCare.Controller
             }
         }
 
-        /// <summary>
-        /// Retrieves data based on current object state
-        /// </summary>
-        /// <param name="objType">type byte: 1 = vehicle, 2 = service</param>
-        public DataTable RetrieveData(byte objType)
-        {
-            Sql sql = CreateSql(objType);
-            DataTable dt = sql.Select();
-            return dt;
-        }
-
-        /// <summary>
-        /// Auxiliary method for PersistData
-        /// </summary>
-        /// <param name="objType">type byte: 1 = vehicle, 2 = service</param>
-        /// <returns>Sql object with suitable parameter </returns>
         private Sql CreateSql(byte objType)
         {
             if (objType == 1)
-            {
                 return new Sql(vehicle);
-            }
             return new Sql(service);
+        }
+
+        /// <summary>
+        /// Retrieves data based on current object state
+        /// </summary>        
+        public DataTable RetrieveData()
+        {
+            Sql sql = new Sql(vehicle);
+            DataTable dtVehicle = sql.SelectVehicle();
+            UpdateVehicle(dtVehicle);
+
+            DataTable dtService = sql.SelectServices();
+
+            return dtService;
+        }
+
+        private void UpdateVehicle(DataTable dtVehicle)
+        {
+            vehicle["id"] = dtVehicle.Rows[0][0].ToString();
+            vehicle["type"] = dtVehicle.Rows[0][1].ToString();
+            vehicle["model"] = dtVehicle.Rows[0][2].ToString();
+            vehicle["manufacturer"] = dtVehicle.Rows[0][3].ToString();
+            vehicle["plate"] = dtVehicle.Rows[0][4].ToString();
+            vehicle["year"] = dtVehicle.Rows[0][5].ToString();            
         }
     }
 }

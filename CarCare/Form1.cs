@@ -17,6 +17,10 @@ namespace CarCare
         static byte vehicleID = Properties.Settings.Default.vehicleID;
         static byte serviceID = Properties.Settings.Default.vehicleID;
 
+        const byte VEHICLE = 1;
+        const byte SERVICE = 2;
+
+
         Text txt = new Text(VehicleID, ServiceID);
 
         public Form1()
@@ -47,32 +51,20 @@ namespace CarCare
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            
-            RenderVehicleAndService();
-            
-            DataTable dt = txt.RetrieveData(2);
+        {   
+            DataTable dt = txt.RetrieveData();
             dgvMain.Columns.Clear();
             dgvMain.DataSource = dt;
 
-            //foreach (DataRow row in dt.Rows)
-            //{
-            //    foreach (DataColumn col in dt.Columns)
-            //    {
-            //        Console.WriteLine(row[col]);
-            //    }
-                
-            //}
+            RenderVehicleAndService();
 
-            
-            
         }
 
         private void RenderVehicleAndService()
         {
             gbVehicle.Text = txt.Vehicle["type"];
             lblModel.Text = txt.Vehicle["model"];
-            lblMaker.Text = txt.Vehicle["maker"];
+            lblMaker.Text = txt.Vehicle["manufacturer"];
             lblMakeYear.Text = txt.Vehicle["year"];
             lblPlate.Text = txt.Vehicle["plate"];
 
