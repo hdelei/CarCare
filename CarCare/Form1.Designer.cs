@@ -47,6 +47,7 @@
             this.lblModel = new System.Windows.Forms.Label();
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.menuVehicle = new System.Windows.Forms.ToolStripMenuItem();
+            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVehicleOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVehicleEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRecentVehicle = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +78,6 @@
             this.tbNextDate = new System.Windows.Forms.MaskedTextBox();
             this.tbDate = new System.Windows.Forms.MaskedTextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
-            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.gbVehicle.SuspendLayout();
             this.menuBar.SuspendLayout();
@@ -100,6 +100,7 @@
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.Size = new System.Drawing.Size(800, 233);
             this.dgvMain.TabIndex = 0;
+            this.dgvMain.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_RowEnter);
             // 
             // execDate
             // 
@@ -264,6 +265,12 @@
             this.menuVehicle.ShortcutKeyDisplayString = "Alt";
             this.menuVehicle.Size = new System.Drawing.Size(68, 20);
             this.menuVehicle.Text = "Veículo";
+            // 
+            // novoToolStripMenuItem
+            // 
+            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.novoToolStripMenuItem.Text = "Novo";
             // 
             // menuVehicleOpen
             // 
@@ -538,12 +545,6 @@
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(494, 75);
             this.tbDescription.TabIndex = 0;
-            // 
-            // novoToolStripMenuItem
-            // 
-            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.novoToolStripMenuItem.Text = "Novo";
             // 
             // Form1
             // 

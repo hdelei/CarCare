@@ -53,8 +53,11 @@ namespace CarCare
         private void Form1_Load(object sender, EventArgs e)
         {   
             DataTable dt = txt.RetrieveData();
+
+            //create method to format DG
             dgvMain.Columns.Clear();
             dgvMain.DataSource = dt;
+            //================
 
             RenderVehicleAndService();
 
@@ -80,8 +83,47 @@ namespace CarCare
             //Calcular missing days
             //Calcular MissingKm
 
+            DgvFormat();
+
+        }
+
+        private void dgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            txt.Service["description"] = "";
+            txt.Service["date"] = "";
+            txt.Service["nextDate"] = "";
+            txt.Service["km"] = "";
+            txt.Service["nextKm"] = "";
+            txt.Service["executor"] = "";
+            txt.Service["status"] = "";
+            txt.Service["missingDays"] = "";
+            txt.Service["missingKm"] = "";
+            txt.Service["id"] = "";
+
+            DgvFormat();
+            
+        }
+
+        private void DgvFormat()
+        {
+            dgvMain.RowHeadersVisible = false;
+            dgvMain.ColumnHeadersVisible = true;
+            dgvMain.Columns[0].Visible = false;
+            dgvMain.Columns[1].Visible = false;
+
             
 
-        }       
+            dgvMain.Columns[2].HeaderText = "Data";
+            dgvMain.Columns[3].HeaderText = "Serviço";
+            dgvMain.Columns[4].HeaderText = "Executor";
+            dgvMain.Columns[5].HeaderText = "Km";
+            dgvMain.Columns[6].HeaderText = "Custo";
+            dgvMain.Columns[7].HeaderText = "Próx. data";
+            dgvMain.Columns[8].HeaderText = "Próx. Km";
+            dgvMain.Columns[9].HeaderText = "Status";
+
+
+        }
     }
 }

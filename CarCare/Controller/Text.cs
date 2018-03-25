@@ -18,6 +18,8 @@ namespace CarCare.Controller
         {
             this.vehicleID = vehicleID;
             this.serviceID = serviceID;
+            vehicle["id"] = vehicleID.ToString();
+            service["id"] = serviceID.ToString();
         }
 
         private Dictionary<String, String> vehicle = new Dictionary<String, String>()
@@ -27,7 +29,7 @@ namespace CarCare.Controller
             { "manufacturer", "Fiat" },
             { "year", "2014" },
             { "plate", "FMH0842" },
-            { "id", "1" },
+            { "id", "10" },
             { "table", "Vehicle" }
         };
 
@@ -42,7 +44,7 @@ namespace CarCare.Controller
             {"status", "ok"},
             {"missingDays", "10"},
             {"missingKm", "200"},
-            { "id", "1" },
+            { "id", "10" },
             { "table", "Service" }
         };
 
