@@ -39,6 +39,7 @@ namespace CarCare.Controller
             {"date", "10/03/1981"},
             {"nextDate", "10/03/2015"},
             {"km", "111000"},
+            {"value", "0"},
             {"nextKm", "10000"},
             {"executor", "vanderlei"},
             {"status", "ok"},

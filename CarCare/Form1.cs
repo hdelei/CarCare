@@ -53,13 +53,15 @@ namespace CarCare
         private void Form1_Load(object sender, EventArgs e)
         {   
             DataTable dt = txt.RetrieveData();
-
-            //create method to format DG
+                        
             dgvMain.Columns.Clear();
             dgvMain.DataSource = dt;
-            //================
+            
 
             RenderVehicleAndService();
+            dgvMain.AllowUserToAddRows = false;
+
+            IntToMonetary();
 
         }
 
@@ -76,6 +78,7 @@ namespace CarCare
             tbNextDate.Text = txt.Service["nextDate"];
             tbKm.Text = txt.Service["km"];
             tbNextKm.Text = txt.Service["nextKm"];
+            tbCost.Text = txt.Service["value"];
             tbExecutor.Text = txt.Service["executor"];
             lblStatus.Text = txt.Service["status"];
             lblMissDays.Text = txt.Service["missingDays"];
@@ -87,22 +90,21 @@ namespace CarCare
 
         }
 
-        private void dgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void DgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
 
-            txt.Service["description"] = "";
-            txt.Service["date"] = "";
-            txt.Service["nextDate"] = "";
-            txt.Service["km"] = "";
-            txt.Service["nextKm"] = "";
-            txt.Service["executor"] = "";
-            txt.Service["status"] = "";
-            txt.Service["missingDays"] = "";
-            txt.Service["missingKm"] = "";
-            txt.Service["id"] = "";
-
-            DgvFormat();
-            
+            txt.Service["id"] = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txt.Service["date"] = dgvMain.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt.Service["description"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txt.Service["executor"] = dgvMain.Rows[e.RowIndex].Cells[4].Value.ToString();            
+            txt.Service["km"] = dgvMain.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txt.Service["value"] = dgvMain.Rows[e.RowIndex].Cells[6].Value.ToString();//aply format
+            txt.Service["nextKm"] = dgvMain.Rows[e.RowIndex].Cells[7].Value.ToString();
+            txt.Service["nextDate"] = dgvMain.Rows[e.RowIndex].Cells[8].Value.ToString();
+            txt.Service["status"] = dgvMain.Rows[e.RowIndex].Cells[9].Value.ToString();
+            //txt.Service["missingDays"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
+            //txt.Service["missingKm"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
+            RenderVehicleAndService();
         }
 
         private void DgvFormat()
@@ -111,19 +113,28 @@ namespace CarCare
             dgvMain.ColumnHeadersVisible = true;
             dgvMain.Columns[0].Visible = false;
             dgvMain.Columns[1].Visible = false;
+            dgvMain.AutoResizeColumns();
 
-            
 
             dgvMain.Columns[2].HeaderText = "Data";
             dgvMain.Columns[3].HeaderText = "Serviço";
             dgvMain.Columns[4].HeaderText = "Executor";
             dgvMain.Columns[5].HeaderText = "Km";
             dgvMain.Columns[6].HeaderText = "Custo";
-            dgvMain.Columns[7].HeaderText = "Próx. data";
-            dgvMain.Columns[8].HeaderText = "Próx. Km";
+            dgvMain.Columns[7].HeaderText = "Próx. Km";
+            dgvMain.Columns[8].HeaderText = "Próx. data";
             dgvMain.Columns[9].HeaderText = "Status";
+        }
 
-
+        private void IntToMonetary()
+        {            
+            //TODO: utilizar a classe pronta que fiz no stackoverflow
+            int costColumn = 6;
+            foreach (DataGridViewRow row in dgvMain.Rows){
+                
+                decimal currentCost = Convert.ToDecimal(row.Cells[costColumn].Value) / 100;
+                Console.WriteLine(currentCost.ToString("C2"));
+            }
         }
     }
 }

@@ -60,11 +60,13 @@
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.gbDetails = new System.Windows.Forms.GroupBox();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblStatusHeader = new System.Windows.Forms.Label();
             this.lblMissKm = new System.Windows.Forms.Label();
             this.lblMissDays = new System.Windows.Forms.Label();
             this.tbNextKm = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.tbCost = new System.Windows.Forms.TextBox();
             this.tbKm = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tbExecutor = new System.Windows.Forms.TextBox();
@@ -78,6 +80,7 @@
             this.tbNextDate = new System.Windows.Forms.MaskedTextBox();
             this.tbDate = new System.Windows.Forms.MaskedTextBox();
             this.tbDescription = new System.Windows.Forms.TextBox();
+            this.btSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             this.gbVehicle.SuspendLayout();
             this.menuBar.SuspendLayout();
@@ -100,7 +103,7 @@
             this.dgvMain.Name = "dgvMain";
             this.dgvMain.Size = new System.Drawing.Size(800, 233);
             this.dgvMain.TabIndex = 0;
-            this.dgvMain.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_RowEnter);
+            this.dgvMain.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvMain_RowEnter);
             // 
             // execDate
             // 
@@ -160,10 +163,11 @@
             // lblPlate
             // 
             this.lblPlate.AutoSize = true;
+            this.lblPlate.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlate.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblPlate.Location = new System.Drawing.Point(97, 93);
+            this.lblPlate.Location = new System.Drawing.Point(4, 171);
             this.lblPlate.Name = "lblPlate";
-            this.lblPlate.Size = new System.Drawing.Size(63, 14);
+            this.lblPlate.Size = new System.Drawing.Size(90, 22);
             this.lblPlate.TabIndex = 0;
             this.lblPlate.Text = "BGT 9925";
             // 
@@ -171,7 +175,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(6, 93);
+            this.label7.Location = new System.Drawing.Point(4, 156);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 14);
             this.label7.TabIndex = 0;
@@ -180,10 +184,11 @@
             // lblMakeYear
             // 
             this.lblMakeYear.AutoSize = true;
+            this.lblMakeYear.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMakeYear.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblMakeYear.Location = new System.Drawing.Point(97, 69);
+            this.lblMakeYear.Location = new System.Drawing.Point(4, 125);
             this.lblMakeYear.Name = "lblMakeYear";
-            this.lblMakeYear.Size = new System.Drawing.Size(35, 14);
+            this.lblMakeYear.Size = new System.Drawing.Size(50, 22);
             this.lblMakeYear.TabIndex = 0;
             this.lblMakeYear.Text = "2015";
             // 
@@ -191,7 +196,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(6, 69);
+            this.label3.Location = new System.Drawing.Point(4, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 14);
             this.label3.TabIndex = 0;
@@ -201,7 +206,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(6, 45);
+            this.label5.Location = new System.Drawing.Point(4, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 14);
             this.label5.TabIndex = 0;
@@ -210,10 +215,11 @@
             // lblMaker
             // 
             this.lblMaker.AutoSize = true;
+            this.lblMaker.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaker.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblMaker.Location = new System.Drawing.Point(97, 45);
+            this.lblMaker.Location = new System.Drawing.Point(4, 82);
             this.lblMaker.Name = "lblMaker";
-            this.lblMaker.Size = new System.Drawing.Size(70, 14);
+            this.lblMaker.Size = new System.Drawing.Size(100, 22);
             this.lblMaker.TabIndex = 0;
             this.lblMaker.Text = "Chevrolet";
             // 
@@ -221,7 +227,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.DimGray;
-            this.label4.Location = new System.Drawing.Point(6, 21);
+            this.label4.Location = new System.Drawing.Point(4, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 14);
             this.label4.TabIndex = 0;
@@ -230,10 +236,11 @@
             // lblModel
             // 
             this.lblModel.AutoSize = true;
+            this.lblModel.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.lblModel.Location = new System.Drawing.Point(97, 21);
+            this.lblModel.Location = new System.Drawing.Point(4, 35);
             this.lblModel.Name = "lblModel";
-            this.lblModel.Size = new System.Drawing.Size(49, 14);
+            this.lblModel.Size = new System.Drawing.Size(70, 22);
             this.lblModel.TabIndex = 0;
             this.lblModel.Text = "Camaro";
             // 
@@ -269,31 +276,31 @@
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             // 
             // menuVehicleOpen
             // 
             this.menuVehicleOpen.Name = "menuVehicleOpen";
-            this.menuVehicleOpen.Size = new System.Drawing.Size(130, 22);
+            this.menuVehicleOpen.Size = new System.Drawing.Size(180, 22);
             this.menuVehicleOpen.Text = "Abrir";
             // 
             // menuVehicleEdit
             // 
             this.menuVehicleEdit.Name = "menuVehicleEdit";
-            this.menuVehicleEdit.Size = new System.Drawing.Size(130, 22);
+            this.menuVehicleEdit.Size = new System.Drawing.Size(180, 22);
             this.menuVehicleEdit.Text = "Editar";
             // 
             // menuRecentVehicle
             // 
             this.menuRecentVehicle.Name = "menuRecentVehicle";
-            this.menuRecentVehicle.Size = new System.Drawing.Size(130, 22);
+            this.menuRecentVehicle.Size = new System.Drawing.Size(180, 22);
             this.menuRecentVehicle.Text = "Recentes";
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(130, 22);
+            this.menuExit.Size = new System.Drawing.Size(180, 22);
             this.menuExit.Text = "Sair";
             // 
             // serviçoToolStripMenuItem
@@ -343,11 +350,13 @@
             // gbDetails
             // 
             this.gbDetails.Controls.Add(this.lblStatus);
+            this.gbDetails.Controls.Add(this.label1);
             this.gbDetails.Controls.Add(this.lblStatusHeader);
             this.gbDetails.Controls.Add(this.lblMissKm);
             this.gbDetails.Controls.Add(this.lblMissDays);
             this.gbDetails.Controls.Add(this.tbNextKm);
             this.gbDetails.Controls.Add(this.label15);
+            this.gbDetails.Controls.Add(this.tbCost);
             this.gbDetails.Controls.Add(this.tbKm);
             this.gbDetails.Controls.Add(this.label14);
             this.gbDetails.Controls.Add(this.tbExecutor);
@@ -378,6 +387,15 @@
             this.lblStatus.Size = new System.Drawing.Size(77, 14);
             this.lblStatus.TabIndex = 10;
             this.lblStatus.Text = "sem status";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(331, 204);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 14);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "custo:";
             // 
             // lblStatusHeader
             // 
@@ -410,6 +428,7 @@
             // 
             this.tbNextKm.Location = new System.Drawing.Point(232, 129);
             this.tbNextKm.Name = "tbNextKm";
+            this.tbNextKm.ReadOnly = true;
             this.tbNextKm.Size = new System.Drawing.Size(100, 22);
             this.tbNextKm.TabIndex = 7;
             // 
@@ -422,10 +441,20 @@
             this.label15.TabIndex = 6;
             this.label15.Text = "próx.Km:";
             // 
+            // tbCost
+            // 
+            this.tbCost.Location = new System.Drawing.Point(401, 201);
+            this.tbCost.Name = "tbCost";
+            this.tbCost.ReadOnly = true;
+            this.tbCost.Size = new System.Drawing.Size(100, 22);
+            this.tbCost.TabIndex = 7;
+            this.tbCost.Text = "0,00";
+            // 
             // tbKm
             // 
             this.tbKm.Location = new System.Drawing.Point(43, 129);
             this.tbKm.Name = "tbKm";
+            this.tbKm.ReadOnly = true;
             this.tbKm.Size = new System.Drawing.Size(100, 22);
             this.tbKm.TabIndex = 7;
             // 
@@ -442,6 +471,7 @@
             // 
             this.tbExecutor.Location = new System.Drawing.Point(7, 175);
             this.tbExecutor.Name = "tbExecutor";
+            this.tbExecutor.ReadOnly = true;
             this.tbExecutor.Size = new System.Drawing.Size(494, 22);
             this.tbExecutor.TabIndex = 4;
             // 
@@ -525,6 +555,7 @@
             this.tbNextDate.Location = new System.Drawing.Point(284, 97);
             this.tbNextDate.Mask = "00/00/0000";
             this.tbNextDate.Name = "tbNextDate";
+            this.tbNextDate.ReadOnly = true;
             this.tbNextDate.Size = new System.Drawing.Size(80, 22);
             this.tbNextDate.TabIndex = 1;
             this.tbNextDate.ValidatingType = typeof(System.DateTime);
@@ -534,6 +565,7 @@
             this.tbDate.Location = new System.Drawing.Point(55, 97);
             this.tbDate.Mask = "00/00/0000";
             this.tbDate.Name = "tbDate";
+            this.tbDate.ReadOnly = true;
             this.tbDate.Size = new System.Drawing.Size(80, 22);
             this.tbDate.TabIndex = 1;
             this.tbDate.ValidatingType = typeof(System.DateTime);
@@ -543,8 +575,18 @@
             this.tbDescription.Location = new System.Drawing.Point(7, 18);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
+            this.tbDescription.ReadOnly = true;
             this.tbDescription.Size = new System.Drawing.Size(494, 75);
             this.tbDescription.TabIndex = 0;
+            // 
+            // btSave
+            // 
+            this.btSave.Location = new System.Drawing.Point(738, 545);
+            this.btSave.Name = "btSave";
+            this.btSave.Size = new System.Drawing.Size(75, 23);
+            this.btSave.TabIndex = 1;
+            this.btSave.Text = "Salvar";
+            this.btSave.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -552,6 +594,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(825, 580);
+            this.Controls.Add(this.btSave);
             this.Controls.Add(this.gbDetails);
             this.Controls.Add(this.gbVehicle);
             this.Controls.Add(this.dgvMain);
@@ -624,6 +667,9 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblStatusHeader;
         private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbCost;
+        private System.Windows.Forms.Button btSave;
     }
 }
 
