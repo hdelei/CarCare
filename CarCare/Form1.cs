@@ -55,13 +55,11 @@ namespace CarCare
             DataTable dt = txt.RetrieveData();
                         
             dgvMain.Columns.Clear();
-            dgvMain.DataSource = dt;
+            dgvMain.DataSource = dt;           
             
 
             RenderVehicleAndService();
-            dgvMain.AllowUserToAddRows = false;
-
-            IntToMonetary();
+            dgvMain.AllowUserToAddRows = false;            
 
         }
 
@@ -98,7 +96,10 @@ namespace CarCare
             txt.Service["description"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
             txt.Service["executor"] = dgvMain.Rows[e.RowIndex].Cells[4].Value.ToString();            
             txt.Service["km"] = dgvMain.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txt.Service["value"] = dgvMain.Rows[e.RowIndex].Cells[6].Value.ToString();//aply format
+
+            decimal auxValue = (decimal)dgvMain.Rows[e.RowIndex].Cells[6].Value;
+
+            txt.Service["value"] = auxValue.ToString("F");
             txt.Service["nextKm"] = dgvMain.Rows[e.RowIndex].Cells[7].Value.ToString();
             txt.Service["nextDate"] = dgvMain.Rows[e.RowIndex].Cells[8].Value.ToString();
             txt.Service["status"] = dgvMain.Rows[e.RowIndex].Cells[9].Value.ToString();
@@ -124,17 +125,9 @@ namespace CarCare
             dgvMain.Columns[7].HeaderText = "Próx. Km";
             dgvMain.Columns[8].HeaderText = "Próx. data";
             dgvMain.Columns[9].HeaderText = "Status";
-        }
 
-        private void IntToMonetary()
-        {            
-            //TODO: utilizar a classe pronta que fiz no stackoverflow
-            int costColumn = 6;
-            foreach (DataGridViewRow row in dgvMain.Rows){
-                
-                decimal currentCost = Convert.ToDecimal(row.Cells[costColumn].Value) / 100;
-                Console.WriteLine(currentCost.ToString("C2"));
-            }
-        }
+            dgvMain.Columns["value"].DefaultCellStyle.Format = "F";
+            //dgvMain.Columns["current_km"].DefaultCellStyle.Format = "";
+        }        
     }
 }
