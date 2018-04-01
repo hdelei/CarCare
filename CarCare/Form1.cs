@@ -19,7 +19,9 @@ namespace CarCare
 
         const byte VEHICLE = 1;
         const byte SERVICE = 2;
-
+        const byte INSERT = 1;
+        const byte UPDATE = 2;
+        const byte DELETE = 3;
 
         Text txt = new Text(VehicleID, ServiceID);
 
@@ -59,7 +61,9 @@ namespace CarCare
             
 
             RenderVehicleAndService();
-            dgvMain.AllowUserToAddRows = false;            
+            dgvMain.AllowUserToAddRows = false;
+
+            //txt.PersistsData(UPDATE, SERVICE);
 
         }
 
@@ -72,15 +76,15 @@ namespace CarCare
             lblPlate.Text = txt.Vehicle["plate"];
 
             tbDescription.Text = txt.Service["description"];
-            tbDate.Text = txt.Service["date"];
-            tbNextDate.Text = txt.Service["nextDate"];
-            tbKm.Text = txt.Service["km"];
-            tbNextKm.Text = txt.Service["nextKm"];
+            tbDate.Text = txt.Service["exec_date"];
+            tbNextDate.Text = txt.Service["next_date"];
+            tbKm.Text = txt.Service["current_km"];
+            tbNextKm.Text = txt.Service["next_km"];
             tbCost.Text = txt.Service["value"];
             tbExecutor.Text = txt.Service["executor"];
             lblStatus.Text = txt.Service["status"];
-            lblMissDays.Text = txt.Service["missingDays"];
-            lblMissKm.Text = txt.Service["missingKm"];
+            lblMissDays.Text = txt.Service["missing_days"];
+            lblMissKm.Text = txt.Service["missing_km"];
             //Calcular missing days
             //Calcular MissingKm
 
@@ -92,16 +96,16 @@ namespace CarCare
         {
 
             txt.Service["id"] = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txt.Service["date"] = dgvMain.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txt.Service["exec_date"] = dgvMain.Rows[e.RowIndex].Cells[2].Value.ToString();
             txt.Service["description"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
             txt.Service["executor"] = dgvMain.Rows[e.RowIndex].Cells[4].Value.ToString();            
-            txt.Service["km"] = dgvMain.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txt.Service["current_km"] = dgvMain.Rows[e.RowIndex].Cells[5].Value.ToString();
 
             decimal auxValue = (decimal)dgvMain.Rows[e.RowIndex].Cells[6].Value;
 
             txt.Service["value"] = auxValue.ToString("F");
-            txt.Service["nextKm"] = dgvMain.Rows[e.RowIndex].Cells[7].Value.ToString();
-            txt.Service["nextDate"] = dgvMain.Rows[e.RowIndex].Cells[8].Value.ToString();
+            txt.Service["next_km"] = dgvMain.Rows[e.RowIndex].Cells[7].Value.ToString();
+            txt.Service["next_date"] = dgvMain.Rows[e.RowIndex].Cells[8].Value.ToString();
             txt.Service["status"] = dgvMain.Rows[e.RowIndex].Cells[9].Value.ToString();
             //txt.Service["missingDays"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
             //txt.Service["missingKm"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();

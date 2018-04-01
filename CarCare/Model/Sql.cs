@@ -12,32 +12,74 @@ namespace CarCare.Model
     class Sql
     {
         Dictionary<String, String> dict;
+        String query = "";
+        Connection conn = new Connection();
+
 
         public Sql(Dictionary<String, String> dict)
         {
             this.dict = dict;
         }
 
+        /// <summary>
+        /// Select database with current vehicle id
+        /// </summary>
+        /// <returns>Datatable with database information</returns>
         public DataTable SelectVehicle()
         {            
-            String query = @"SELECT * FROM Vehicle WHERE id = "+ dict["id"] +";";
-            Connection conn = new Connection();
+            query = @"SELECT * FROM Vehicle WHERE id = "+ dict["id"] +";";
+            //conn = new Connection();
             conn.Execute(query);
             return conn.DtTable;            
         }
 
+        /// <summary>
+        /// Select database with current service id
+        /// </summary>
+        /// <returns>Datatable with database information</returns>
         public DataTable SelectServices()
         {
-            String query = @"SELECT * FROM Service WHERE vehicleID = " + dict["id"] + ";";
-            Connection conn = new Connection();
+            query = @"SELECT * FROM Service WHERE vehicleID = " + dict["id"] + ";";
+            //Connection conn = new Connection();
             conn.Execute(query);
             return conn.DtTable;            
         }
 
+        /// <summary>
+        /// Update data with current dict information
+        /// </summary>
+        /// <returns>number of rows affected</returns>
         public int Update()
         {
-            //use dict object to fill query
-            return 0;
+            query = "UPDATE " + dict["table"] +
+                    " SET " + ColumnValues() + 
+                    " WHERE id = " + dict["id"] + ";";           
+
+            return conn.Execute(query);           
+        }
+
+        /// <summary>
+        /// Filter dictionary joining strings for sqlite format
+        /// </summary>
+        /// <returns>String. Example "table1='value1', table2='value2'"</returns>
+        private string ColumnValues()
+        {
+            string values = "";
+            var list = dict.Keys.ToList();
+            list.Sort();
+
+            foreach (var key in list)
+            {
+                if (key != "table" && key != "id"
+                    && !key.Contains("missing"))
+                {
+                    values += key + " = '" + dict[key] + "', ";
+                }
+            }
+
+            values = values.TrimEnd(' ').TrimEnd(',');            
+            
+            return values;
         }
 
         public int Insert()

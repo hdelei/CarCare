@@ -36,15 +36,15 @@ namespace CarCare.Controller
         private Dictionary<String, String> service = new Dictionary<String, String>()
         {
             {"description", "teste"},
-            {"date", "10/03/1981"},
-            {"nextDate", "10/03/2015"},
-            {"km", "111000"},
+            {"exec_date", "10/03/1981"},
+            {"next_date", "10/03/2015"},
+            {"current_km", "111000"},
             {"value", "0"},
-            {"nextKm", "10000"},
+            {"next_km", "10000"},
             {"executor", "vanderlei"},
             {"status", "ok"},
-            {"missingDays", "10"},
-            {"missingKm", "200"},
+            {"missing_days", "10"},
+            {"missing_km", "200"},
             { "id", "10" },
             { "table", "Service" }
         };
@@ -67,9 +67,9 @@ namespace CarCare.Controller
         /// <summary>
         /// Requests operations in a database
         /// </summary>
-        /// <param name="queryType"> 1 = create, 2 = update, 3 = delete</param>
+        /// <param name="queryType"> 1 = insert, 2 = update, 3 = delete</param>
         /// <param name="objType">1 = vehicle, 2 = service</param>
-        public void PersistData(byte queryType, byte objType)
+        public void PersistsData(byte queryType, byte objType)
         {
             Sql sql = CreateSql(objType);
 
@@ -79,7 +79,7 @@ namespace CarCare.Controller
                     sql.Insert();
                     break;
                 case 2:
-                    sql.Update();
+                    sql.Update();                    
                     break;
                 case 3:
                     sql.Delete();
