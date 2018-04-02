@@ -71,7 +71,7 @@ namespace CarCare
 
             query += @"CREATE TABLE                Service (
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-                vehicleID   NUMERIC REFERENCES Vehicle (id),
+                vehicleID   INTEGER REFERENCES Vehicle (id),
                 exec_date                              DATE,
                 description                   TEXT NOT NULL,
                 executor                               TEXT,

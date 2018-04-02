@@ -5,10 +5,10 @@
     <Setting Name="connectionString" Type="System.String" Scope="User">
       <Value Profile="(Default)">CarCare.db</Value>
     </Setting>
-    <Setting Name="vehicleID" Type="System.Byte" Scope="User">
+    <Setting Name="vehicleID" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="serviceID" Type="System.Byte" Scope="User">
+    <Setting Name="serviceID" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
   </Settings>

@@ -14,8 +14,8 @@ namespace CarCare
 {
     public partial class Form1 : Form
     {        
-        static byte vehicleID = Properties.Settings.Default.vehicleID;
-        static byte serviceID = Properties.Settings.Default.vehicleID;
+        static int vehicleID = Properties.Settings.Default.vehicleID;
+        static int serviceID = Properties.Settings.Default.vehicleID;
 
         const byte VEHICLE = 1;
         const byte SERVICE = 2;
@@ -31,7 +31,7 @@ namespace CarCare
             SQLiteDB.Create(Properties.Settings.Default.connectionString);            
         }
 
-        public static byte VehicleID
+        public static int VehicleID
         {
             get => vehicleID;
             set
@@ -41,7 +41,7 @@ namespace CarCare
                 Properties.Settings.Default.Save();
             }
         }
-        public static byte ServiceID
+        public static int ServiceID
         {
             get => serviceID;
             set
@@ -64,6 +64,8 @@ namespace CarCare
             dgvMain.AllowUserToAddRows = false;
 
             //txt.PersistsData(UPDATE, SERVICE);
+            //txt.PersistsData(DELETE, SERVICE);
+            //txt.PersistsData(INSERT, VEHICLE);
 
         }
 
@@ -94,6 +96,7 @@ namespace CarCare
 
         private void DgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
+            VehicleID = Convert.ToInt16(dgvMain.Rows[e.RowIndex].Cells[1].Value);
 
             txt.Service["id"] = dgvMain.Rows[e.RowIndex].Cells[0].Value.ToString();
             txt.Service["exec_date"] = dgvMain.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -109,7 +112,11 @@ namespace CarCare
             txt.Service["status"] = dgvMain.Rows[e.RowIndex].Cells[9].Value.ToString();
             //txt.Service["missingDays"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
             //txt.Service["missingKm"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+
             RenderVehicleAndService();
+
+
         }
 
         private void DgvFormat()

@@ -76,7 +76,8 @@ namespace CarCare.Controller
             switch (queryType)
             {
                 case 1:
-                    sql.Insert();
+                    sql.VehicleID = vehicleID;
+                    sql.Insert();                    
                     break;
                 case 2:
                     sql.Update();                    

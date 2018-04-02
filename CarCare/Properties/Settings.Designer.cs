@@ -38,9 +38,9 @@ namespace CarCare.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte vehicleID {
+        public int vehicleID {
             get {
-                return ((byte)(this["vehicleID"]));
+                return ((int)(this["vehicleID"]));
             }
             set {
                 this["vehicleID"] = value;
@@ -50,9 +50,9 @@ namespace CarCare.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte serviceID {
+        public int serviceID {
             get {
-                return ((byte)(this["serviceID"]));
+                return ((int)(this["serviceID"]));
             }
             set {
                 this["serviceID"] = value;
