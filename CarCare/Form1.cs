@@ -82,7 +82,12 @@ namespace CarCare
             tbNextDate.Text = txt.Service["next_date"];
             tbKm.Text = txt.Service["current_km"];
             tbNextKm.Text = txt.Service["next_km"];
-            tbCost.Text = txt.Service["value"];
+
+            decimal auxValue = Convert.ToDecimal(txt.Service["value"]);
+            if (auxValue > 0)            
+                auxValue /= 100;            
+
+            tbCost.Text = auxValue.ToString("F");
             tbExecutor.Text = txt.Service["executor"];
             lblStatus.Text = txt.Service["status"];
             lblMissDays.Text = txt.Service["missing_days"];
@@ -104,19 +109,16 @@ namespace CarCare
             txt.Service["executor"] = dgvMain.Rows[e.RowIndex].Cells[4].Value.ToString();            
             txt.Service["current_km"] = dgvMain.Rows[e.RowIndex].Cells[5].Value.ToString();
 
-            decimal auxValue = (decimal)dgvMain.Rows[e.RowIndex].Cells[6].Value;
-
-            txt.Service["value"] = auxValue.ToString("F");
+            object auxValue = dgvMain.Rows[e.RowIndex].Cells[6].Value;
+            txt.Service["value"] = Monetary.DecimalObjectToIntString(auxValue);
+            
             txt.Service["next_km"] = dgvMain.Rows[e.RowIndex].Cells[7].Value.ToString();
             txt.Service["next_date"] = dgvMain.Rows[e.RowIndex].Cells[8].Value.ToString();
             txt.Service["status"] = dgvMain.Rows[e.RowIndex].Cells[9].Value.ToString();
             //txt.Service["missingDays"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
             //txt.Service["missingKm"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
 
-
             RenderVehicleAndService();
-
-
         }
 
         private void DgvFormat()
@@ -126,7 +128,6 @@ namespace CarCare
             dgvMain.Columns[0].Visible = false;
             dgvMain.Columns[1].Visible = false;
             dgvMain.AutoResizeColumns();
-
 
             dgvMain.Columns[2].HeaderText = "Data";
             dgvMain.Columns[3].HeaderText = "Serviço";

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
@@ -60,6 +61,29 @@ namespace CarCare.Controller
                 validEntry = userEntry + "00";
             }
             return validEntry;
+        }
+
+        /// <summary>
+        /// Transform decimal cell DataGrid value in integer
+        /// </summary>
+        /// <param name="value">Object in decimal format</param>
+        /// <returns>Integer to String parsed</returns>
+        public static string DecimalObjectToIntString(object value)
+        {
+            string valueStr = value.ToString();
+            int commaIndex = valueStr.IndexOf(",");
+
+            string subStr = "";
+            if (commaIndex > -1)
+            {
+                subStr = valueStr.Substring(commaIndex + 1);
+                if (subStr.Length == 1)
+                    valueStr += "0";
+            }            
+
+            valueStr = new String(valueStr.Where(Char.IsDigit).ToArray());
+
+            return valueStr;
         }
 
     }
