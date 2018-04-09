@@ -22,8 +22,12 @@ namespace CarCare
         const byte INSERT = 1;
         const byte UPDATE = 2;
         const byte DELETE = 3;
+        byte action;//insert, update, delete
+        byte target;//vehicle, service
 
         Text txt = new Text(VehicleID, ServiceID);
+
+        bool isTextEditable = false;
 
         public Form1()
         {
@@ -140,6 +144,54 @@ namespace CarCare
 
             dgvMain.Columns["value"].DefaultCellStyle.Format = "F";
             //dgvMain.Columns["current_km"].DefaultCellStyle.Format = "";
-        }        
+        }
+
+        private void EditarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditTextBoxes();
+            target = SERVICE;
+            action = UPDATE;
+        }
+
+        /// <summary>
+        /// Lock or Unlock TextBoxes for edition
+        /// </summary>
+        private void EditTextBoxes()
+        {
+            if (!isTextEditable)
+            {
+                foreach (Control tb in gbDetails.Controls)
+                {
+                    if (tb is TextBox)
+                        ((TextBox)tb).ReadOnly = false;
+                    else if (tb is MaskedTextBox)
+                        ((MaskedTextBox)tb).ReadOnly = false;
+                }
+                isTextEditable = true;
+                btSave.Enabled = true;                
+            }
+            else
+            {
+                foreach (Control tb in gbDetails.Controls)
+                {
+                    if (tb is TextBox)
+                        ((TextBox)tb).ReadOnly = true;
+                    else if (tb is MaskedTextBox)
+                        ((MaskedTextBox)tb).ReadOnly = true;
+                }
+                isTextEditable = false;
+                btSave.Enabled = false;
+            }            
+        }
+
+        private void BtSave_Click(object sender, EventArgs e)
+        {
+            txt.PersistsData(action, target);
+
+            //TODO: call a method to update txt fields
+            MessageBox.Show("Implemente um método para popular o objeto Text");
+
+            EditTextBoxes();
+        }
     }
 }

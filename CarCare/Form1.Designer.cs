@@ -276,31 +276,31 @@
             // novoToolStripMenuItem
             // 
             this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.novoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.novoToolStripMenuItem.Text = "Novo";
             // 
             // menuVehicleOpen
             // 
             this.menuVehicleOpen.Name = "menuVehicleOpen";
-            this.menuVehicleOpen.Size = new System.Drawing.Size(180, 22);
+            this.menuVehicleOpen.Size = new System.Drawing.Size(130, 22);
             this.menuVehicleOpen.Text = "Abrir";
             // 
             // menuVehicleEdit
             // 
             this.menuVehicleEdit.Name = "menuVehicleEdit";
-            this.menuVehicleEdit.Size = new System.Drawing.Size(180, 22);
+            this.menuVehicleEdit.Size = new System.Drawing.Size(130, 22);
             this.menuVehicleEdit.Text = "Editar";
             // 
             // menuRecentVehicle
             // 
             this.menuRecentVehicle.Name = "menuRecentVehicle";
-            this.menuRecentVehicle.Size = new System.Drawing.Size(180, 22);
+            this.menuRecentVehicle.Size = new System.Drawing.Size(130, 22);
             this.menuRecentVehicle.Text = "Recentes";
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(180, 22);
+            this.menuExit.Size = new System.Drawing.Size(130, 22);
             this.menuExit.Text = "Sair";
             // 
             // serviçoToolStripMenuItem
@@ -332,6 +332,7 @@
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             this.editarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.EditarToolStripMenuItem_Click);
             // 
             // excluirToolStripMenuItem
             // 
@@ -581,12 +582,14 @@
             // 
             // btSave
             // 
+            this.btSave.Enabled = false;
             this.btSave.Location = new System.Drawing.Point(738, 545);
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(75, 23);
             this.btSave.TabIndex = 1;
             this.btSave.Text = "Salvar";
             this.btSave.UseVisualStyleBackColor = true;
+            this.btSave.Click += new System.EventHandler(this.BtSave_Click);
             // 
             // Form1
             // 
