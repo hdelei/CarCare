@@ -123,5 +123,32 @@ namespace CarCare.Controller
             vehicle["plate"] = dtVehicle.Rows[0][4].ToString();
             vehicle["year"] = dtVehicle.Rows[0][5].ToString();            
         }
+
+        /// <summary>
+        /// Update this object properties with data incoming from TextBoxes
+        /// </summary>
+        /// <param name="dict">2 dictionaries of (string, string)</param>
+        public void SetTextFromDicts(Dictionary<string, string>[] dict)
+        {
+            vehicle["model"] = dict[0]["lblModel"];
+            vehicle["manufacturer"] = dict[0]["lblMaker"];
+            vehicle["year"] = dict[0]["lblMakeYear"];
+            vehicle["plate"] = dict[0]["lblModel"];
+
+            service["description"] = dict[1]["tbDescription"];
+            service["exec_date"] = dict[1]["tbDate"];
+            service["next_date"] = dict[1]["tbNextDate"];
+            service["current_km"] = dict[1]["tbKm"];
+            service["value"] = dict[1]["tbCost"];
+            service["next_km"] = dict[1]["tbNextKm"];
+            service["executor"] = dict[1]["tbExecutor"];
+            //service["status"] = dict[1][""];
+            //service["missing_days"] = dict[1][""];
+            //service["missing_km"] = dict[1][""];
+            
+            //ID IS ALREADY UPDATED ON ROWENTER EVENT            
+        }
+
+
     }
 }

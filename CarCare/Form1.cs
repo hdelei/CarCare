@@ -149,8 +149,9 @@ namespace CarCare
         private void EditarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditTextBoxes();
-            target = SERVICE;
-            action = UPDATE;
+            Context.SetContext(SERVICE, UPDATE);
+            //target = SERVICE;
+            //action = UPDATE;
         }
 
         /// <summary>
@@ -186,12 +187,37 @@ namespace CarCare
 
         private void BtSave_Click(object sender, EventArgs e)
         {
-            txt.PersistsData(action, target);
+            PrepareDataBeforePersists();
 
-            //TODO: call a method to update txt fields
-            MessageBox.Show("Implemente um método para popular o objeto Text");
+            txt.PersistsData(Context.Action, Context.Target);
 
-            EditTextBoxes();
+            EditTextBoxes();            
+        }
+
+        private void PrepareDataBeforePersists()
+        {
+            Dictionary<string, string> vehicleText = new Dictionary<string, string>();
+            Dictionary<string, string> serviceText = new Dictionary<string, string>();
+
+            foreach (Control ct in gbVehicle.Controls)
+            {
+                if (!ct.Name.Contains("label"))                
+                    vehicleText.Add(ct.Name, ct.Text);                
+            }
+            
+            foreach (Control ct in gbDetails.Controls)
+            {
+                if (!ct.Name.Contains("label"))                
+                    serviceText.Add(ct.Name, ct.Text);                
+            }
+
+            serviceText["tbCost"] = Monetary.EntryValidate(serviceText["tbCost"]);
+            //Console.WriteLine(Monetary.EntryValidate(serviceText["tbCost"]));
+            Dictionary<string, string>[] dictList = new Dictionary<string, string>[2];
+            dictList[0] = vehicleText;
+            dictList[1] = serviceText;
+
+            txt.SetTextFromDicts(dictList);
         }
     }
 }
