@@ -67,7 +67,7 @@ namespace CarCare
                 model                         TEXT NOT NULL,
                 manufacturer                           TEXT,
                 plate                                  TEXT,
-                year             NUMERIC DEFAULT (2000));" ;
+                year             INTEGER DEFAULT (2000));" ;
 
             query += @"CREATE TABLE                Service (
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -75,9 +75,9 @@ namespace CarCare
                 exec_date                              DATE,
                 description                   TEXT NOT NULL,
                 executor                               TEXT,
-                current_km                          NUMERIC,
-                value                               NUMERIC,
-                next_km                             NUMERIC,
+                current_km                          INTEGER,
+                value                               INTEGER,
+                next_km                             INTEGER,
                 next_date                              DATE,
                 status                              TEXT);";
 
