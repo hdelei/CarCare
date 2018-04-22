@@ -109,9 +109,11 @@ namespace CarCare.Controller
             int valueColumnIndex = dtService.Columns["value"].Ordinal;
             //Console.WriteLine(Monetary.DtColumnIntToDecimal(dtService, valueColumnIndex));
 
-            DataTable newDtService = Monetary.DtColumnIntToDecimal(dtService, valueColumnIndex);
+            //DataTable newDtService = Monetary.DtColumnIntToDecimal(dtService, valueColumnIndex);
+            DataTable newDtService = Monetary.ValueDividedBy100(dtService, valueColumnIndex);
 
             return newDtService;
+            //return dtService;
         }
 
         private void UpdateVehicle(DataTable dtVehicle)

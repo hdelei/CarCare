@@ -7,41 +7,45 @@ namespace CarCare.Controller
 {
     class Monetary
     {
-        private static decimal valorTotal;
+        private static double valorTotal;
 
-        public static decimal ValorTotal
+        public static double ValorTotal
         {
             get { return valorTotal; }
         }
 
-        public static DataTable DtColumnIntToDecimal(DataTable dt, int column)
+        /// <summary>
+        /// Change column type to double and divide the values by 100
+        /// </summary>
+        /// <param name="dt">Datatable Object with integer values</param>
+        /// <param name="column">index of the values column</param>
+        /// <returns></returns>
+        public static DataTable ValueDividedBy100(DataTable dt, int column)
         {
-            List<decimal> price = new List<decimal>();
-            //Gerar lista de valores em decimal
+            List<double> price = new List<double>();
+            
             foreach (DataRow row in dt.Rows)
-            {   
-                price.Add((decimal)row[column]/100);
+            {               
+                price.Add(Convert.ToDouble(row[column]) / 100);                
             }
-
-            //clonar o datatable, transformando a coluna em decimal
+            
             DataTable dtCloned = dt.Clone();
-            dtCloned.Columns[column].DataType = typeof(decimal);
+            dtCloned.Columns[column].DataType = typeof(double);
             foreach (DataRow row in dt.Rows)
             {
                 dtCloned.ImportRow(row);
             }
-
-            //Inserir valores em decimal
+            
             for (int rowIndex = 0; rowIndex < dt.Rows.Count; rowIndex++)
             {
                 dtCloned.Rows[rowIndex][column] = price[rowIndex];
             }
-
-            //gera a soma de todos os valores 
-            valorTotal = price.Sum();
             
+            valorTotal = price.Sum();
+
             return dtCloned;
         }
+        
         /// <summary>
         /// Valida a entrada de valor do usuário, evitando erros de conversão de
         /// valores

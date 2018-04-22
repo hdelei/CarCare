@@ -57,20 +57,28 @@ namespace CarCare
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {   
-            DataTable dt = txt.RetrieveData();
-                        
-            dgvMain.Columns.Clear();
-            dgvMain.DataSource = dt;           
-            
+        {
 
-            RenderVehicleAndService();
+            ReloadDataGridView();            
+
             dgvMain.AllowUserToAddRows = false;
 
             //txt.PersistsData(UPDATE, SERVICE);
             //txt.PersistsData(DELETE, SERVICE);
             //txt.PersistsData(INSERT, VEHICLE);
 
+            //MessageBox.Show("Refatorar parte numerica de valor");
+
+        }
+
+        private void ReloadDataGridView()
+        {
+            DataTable dt = txt.RetrieveData();
+
+            dgvMain.Columns.Clear();
+            dgvMain.DataSource = dt;
+
+            RenderVehicleAndService();
         }
 
         private void RenderVehicleAndService()
@@ -86,12 +94,13 @@ namespace CarCare
             tbNextDate.Text = txt.Service["next_date"];
             tbKm.Text = txt.Service["current_km"];
             tbNextKm.Text = txt.Service["next_km"];
-
-            decimal auxValue = Convert.ToDecimal(txt.Service["value"]);
-            if (auxValue > 0)            
-                auxValue /= 100;            
-
-            tbCost.Text = auxValue.ToString("F");
+            
+            //decimal auxValue = Convert.ToDecimal(txt.Service["value"]);
+            //if (auxValue > 0)            
+            //    auxValue /= 100;
+            
+            double aux = double.Parse(txt.Service["value"]);
+            tbCost.Text = aux.ToString("F");
             tbExecutor.Text = txt.Service["executor"];
             lblStatus.Text = txt.Service["status"];
             lblMissDays.Text = txt.Service["missing_days"];
@@ -114,8 +123,8 @@ namespace CarCare
             txt.Service["current_km"] = dgvMain.Rows[e.RowIndex].Cells[5].Value.ToString();
 
             object auxValue = dgvMain.Rows[e.RowIndex].Cells[6].Value;
-            txt.Service["value"] = Monetary.DecimalObjectToIntString(auxValue);
-            
+            //txt.Service["value"] = Monetary.DecimalObjectToIntString(auxValue);
+            txt.Service["value"] = auxValue.ToString();
             txt.Service["next_km"] = dgvMain.Rows[e.RowIndex].Cells[7].Value.ToString();
             txt.Service["next_date"] = dgvMain.Rows[e.RowIndex].Cells[8].Value.ToString();
             txt.Service["status"] = dgvMain.Rows[e.RowIndex].Cells[9].Value.ToString();
@@ -191,7 +200,8 @@ namespace CarCare
 
             txt.PersistsData(Context.Action, Context.Target);
 
-            EditTextBoxes();            
+            EditTextBoxes();
+            ReloadDataGridView();
         }
 
         private void PrepareDataBeforePersists()
@@ -210,9 +220,9 @@ namespace CarCare
                 if (!ct.Name.Contains("label"))                
                     serviceText.Add(ct.Name, ct.Text);                
             }
-
+                        
             serviceText["tbCost"] = Monetary.EntryValidate(serviceText["tbCost"]);
-            //Console.WriteLine(Monetary.EntryValidate(serviceText["tbCost"]));
+
             Dictionary<string, string>[] dictList = new Dictionary<string, string>[2];
             dictList[0] = vehicleText;
             dictList[1] = serviceText;
