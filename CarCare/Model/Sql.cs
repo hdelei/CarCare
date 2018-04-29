@@ -97,7 +97,7 @@ namespace CarCare.Model
 
             query = "INSERT INTO " + dict["table"] + 
                     " (" + result["columns"] + ") " + 
-                    " VALUES (" + result["values"] + ");";
+                    " VALUES (" + result["values"] + ");";           
 
             return conn.Execute(query);
         }
@@ -107,11 +107,12 @@ namespace CarCare.Model
             string columns = "vehicleID, ";
             string values = "'" + vehicleID.ToString() + "', ";
 
-            if (!dict.ContainsKey("vehicleID"))
-            {
-                columns = "";
-                values = "";
-            }
+            //if (!dict.ContainsKey("vehicleID"))
+            //{
+            //    Console.WriteLine("Nao contem vehicleID");
+            //    columns = "";
+            //    values = "";
+            //}
 
             var list = dict.Keys.ToList();
             list.Sort();

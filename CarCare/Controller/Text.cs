@@ -77,9 +77,9 @@ namespace CarCare.Controller
             {
                 case 1:
                     sql.VehicleID = vehicleID;
-                    sql.Insert();                    
+                    sql.Insert();               
                     break;
-                case 2:
+                case 2:                    
                     sql.Update();                    
                     break;
                 case 3:
@@ -106,14 +106,11 @@ namespace CarCare.Controller
 
             DataTable dtService = sql.SelectServices();
 
-            int valueColumnIndex = dtService.Columns["value"].Ordinal;
-            //Console.WriteLine(Monetary.DtColumnIntToDecimal(dtService, valueColumnIndex));
-
-            //DataTable newDtService = Monetary.DtColumnIntToDecimal(dtService, valueColumnIndex);
+            int valueColumnIndex = dtService.Columns["value"].Ordinal;            
+            
             DataTable newDtService = Monetary.ValueDividedBy100(dtService, valueColumnIndex);
 
-            return newDtService;
-            //return dtService;
+            return newDtService;            
         }
 
         private void UpdateVehicle(DataTable dtVehicle)

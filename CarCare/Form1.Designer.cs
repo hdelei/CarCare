@@ -38,16 +38,16 @@
             this.nextKM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuBar = new System.Windows.Forms.MenuStrip();
             this.menuVehicle = new System.Windows.Forms.ToolStripMenuItem();
-            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVehicleOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSNewVehicle = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSOpenVehicle = new System.Windows.Forms.ToolStripMenuItem();
             this.menuVehicleEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuRecentVehicle = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSAppExit = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novovazioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novobaseadoNoAtualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSNewEmptyService = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSNewService = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSEditService = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSDeleteService = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.btSave = new System.Windows.Forms.Button();
             this.tbDescription = new System.Windows.Forms.TextBox();
@@ -157,11 +157,11 @@
             // menuVehicle
             // 
             this.menuVehicle.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoToolStripMenuItem,
-            this.menuVehicleOpen,
+            this.TSNewVehicle,
+            this.TSOpenVehicle,
             this.menuVehicleEdit,
             this.menuRecentVehicle,
-            this.menuExit});
+            this.TSAppExit});
             this.menuVehicle.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuVehicle.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.menuVehicle.Name = "menuVehicle";
@@ -169,72 +169,75 @@
             this.menuVehicle.Size = new System.Drawing.Size(68, 20);
             this.menuVehicle.Text = "Veículo";
             // 
-            // novoToolStripMenuItem
+            // TSNewVehicle
             // 
-            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.novoToolStripMenuItem.Text = "Novo";
+            this.TSNewVehicle.Name = "TSNewVehicle";
+            this.TSNewVehicle.Size = new System.Drawing.Size(180, 22);
+            this.TSNewVehicle.Text = "Novo";
             // 
-            // menuVehicleOpen
+            // TSOpenVehicle
             // 
-            this.menuVehicleOpen.Name = "menuVehicleOpen";
-            this.menuVehicleOpen.Size = new System.Drawing.Size(130, 22);
-            this.menuVehicleOpen.Text = "Abrir";
+            this.TSOpenVehicle.Name = "TSOpenVehicle";
+            this.TSOpenVehicle.Size = new System.Drawing.Size(180, 22);
+            this.TSOpenVehicle.Text = "Abrir";
             // 
             // menuVehicleEdit
             // 
             this.menuVehicleEdit.Name = "menuVehicleEdit";
-            this.menuVehicleEdit.Size = new System.Drawing.Size(130, 22);
+            this.menuVehicleEdit.Size = new System.Drawing.Size(180, 22);
             this.menuVehicleEdit.Text = "Editar";
             // 
             // menuRecentVehicle
             // 
             this.menuRecentVehicle.Name = "menuRecentVehicle";
-            this.menuRecentVehicle.Size = new System.Drawing.Size(130, 22);
+            this.menuRecentVehicle.Size = new System.Drawing.Size(180, 22);
             this.menuRecentVehicle.Text = "Recentes";
             // 
-            // menuExit
+            // TSAppExit
             // 
-            this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(130, 22);
-            this.menuExit.Text = "Sair";
+            this.TSAppExit.Name = "TSAppExit";
+            this.TSAppExit.Size = new System.Drawing.Size(180, 22);
+            this.TSAppExit.Text = "Sair";
             // 
             // serviçoToolStripMenuItem
             // 
             this.serviçoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novovazioToolStripMenuItem,
-            this.novobaseadoNoAtualToolStripMenuItem,
-            this.editarToolStripMenuItem,
-            this.excluirToolStripMenuItem});
+            this.TSNewEmptyService,
+            this.TSNewService,
+            this.TSEditService,
+            this.TSDeleteService});
             this.serviçoToolStripMenuItem.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serviçoToolStripMenuItem.Name = "serviçoToolStripMenuItem";
             this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.serviçoToolStripMenuItem.Text = "Serviço";
             // 
-            // novovazioToolStripMenuItem
+            // TSNewEmptyService
             // 
-            this.novovazioToolStripMenuItem.Name = "novovazioToolStripMenuItem";
-            this.novovazioToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.novovazioToolStripMenuItem.Text = "Novo (vazio)";
+            this.TSNewEmptyService.Name = "TSNewEmptyService";
+            this.TSNewEmptyService.Size = new System.Drawing.Size(235, 22);
+            this.TSNewEmptyService.Text = "Novo (vazio)";
+            this.TSNewEmptyService.Click += new System.EventHandler(this.TSNewEmptyService_Click);
             // 
-            // novobaseadoNoAtualToolStripMenuItem
+            // TSNewService
             // 
-            this.novobaseadoNoAtualToolStripMenuItem.Name = "novobaseadoNoAtualToolStripMenuItem";
-            this.novobaseadoNoAtualToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.novobaseadoNoAtualToolStripMenuItem.Text = "Novo (baseado no atual)";
+            this.TSNewService.Name = "TSNewService";
+            this.TSNewService.Size = new System.Drawing.Size(235, 22);
+            this.TSNewService.Text = "Novo (baseado no atual)";
+            this.TSNewService.Click += new System.EventHandler(this.TSNewService_Click);
             // 
-            // editarToolStripMenuItem
+            // TSEditService
             // 
-            this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.editarToolStripMenuItem.Text = "Editar";
-            this.editarToolStripMenuItem.Click += new System.EventHandler(this.EditarToolStripMenuItem_Click);
+            this.TSEditService.Name = "TSEditService";
+            this.TSEditService.Size = new System.Drawing.Size(235, 22);
+            this.TSEditService.Text = "Editar";
+            this.TSEditService.Click += new System.EventHandler(this.TSEditService_Click);
             // 
-            // excluirToolStripMenuItem
+            // TSDeleteService
             // 
-            this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.excluirToolStripMenuItem.Text = "Excluir";
+            this.TSDeleteService.Name = "TSDeleteService";
+            this.TSDeleteService.Size = new System.Drawing.Size(235, 22);
+            this.TSDeleteService.Text = "Excluir";
+            this.TSDeleteService.Click += new System.EventHandler(this.TSDeleteService_Click);
             // 
             // menuHelp
             // 
@@ -631,16 +634,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nextDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn nextKM;
         private System.Windows.Forms.ToolStripMenuItem menuRecentVehicle;
-        private System.Windows.Forms.ToolStripMenuItem menuExit;
-        private System.Windows.Forms.ToolStripMenuItem menuVehicleOpen;
+        private System.Windows.Forms.ToolStripMenuItem TSAppExit;
+        private System.Windows.Forms.ToolStripMenuItem TSOpenVehicle;
         private System.Windows.Forms.ToolStripMenuItem menuVehicleEdit;
         private System.Windows.Forms.ToolStripMenuItem serviçoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem novovazioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem novobaseadoNoAtualToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excluirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSNewEmptyService;
+        private System.Windows.Forms.ToolStripMenuItem TSNewService;
+        private System.Windows.Forms.ToolStripMenuItem TSEditService;
+        private System.Windows.Forms.ToolStripMenuItem TSDeleteService;
         private System.Windows.Forms.ToolStripMenuItem menuHelp;
-        private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TSNewVehicle;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.TextBox tbDescription;
         private System.Windows.Forms.MaskedTextBox tbDate;

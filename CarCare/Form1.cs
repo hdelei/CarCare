@@ -22,8 +22,8 @@ namespace CarCare
         const byte INSERT = 1;
         const byte UPDATE = 2;
         const byte DELETE = 3;
-        byte action;//insert, update, delete
-        byte target;//vehicle, service
+        //byte action;//insert, update, delete
+        //byte target;//vehicle, service
 
         Text txt = new Text(VehicleID, ServiceID);
 
@@ -58,17 +58,9 @@ namespace CarCare
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             ReloadDataGridView();            
 
             dgvMain.AllowUserToAddRows = false;
-
-            //txt.PersistsData(UPDATE, SERVICE);
-            //txt.PersistsData(DELETE, SERVICE);
-            //txt.PersistsData(INSERT, VEHICLE);
-
-            //MessageBox.Show("Refatorar parte numerica de valor");
-
         }
 
         private void ReloadDataGridView()
@@ -155,12 +147,10 @@ namespace CarCare
             //dgvMain.Columns["current_km"].DefaultCellStyle.Format = "";
         }
 
-        private void EditarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TSEditService_Click(object sender, EventArgs e)
         {
             EditTextBoxes();
-            Context.SetContext(SERVICE, UPDATE);
-            //target = SERVICE;
-            //action = UPDATE;
+            Context.SetContext(SERVICE, UPDATE);            
         }
 
         /// <summary>
@@ -228,6 +218,43 @@ namespace CarCare
             dictList[1] = serviceText;
 
             txt.SetTextFromDicts(dictList);
+        }
+
+        private void TSNewEmptyService_Click(object sender, EventArgs e)
+        {
+            EditTextBoxes();
+            Context.SetContext(SERVICE, INSERT);
+
+            foreach (Control ct in gbDetails.Controls)
+            {
+                if (!ct.Name.Contains("label"))
+                {
+                    ct.Text = "";
+                }
+            }
+            tbDescription.Focus();
+        }
+
+        private void TSNewService_Click(object sender, EventArgs e)
+        {
+            EditTextBoxes();
+            Context.SetContext(SERVICE, INSERT);
+            tbDescription.Focus();
+            tbDescription.SelectAll();
+        }
+
+        private void TSDeleteService_Click(object sender, EventArgs e)
+        {
+            Context.SetContext(SERVICE, DELETE);
+            //TODO: create a warning message before deleting
+            string areYouSure = "Certeza que deseja mandar este serviço pro espaço?";
+            DialogResult dr = MessageBox.Show(areYouSure, "Aviso:", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.Yes)
+            {
+                txt.PersistsData(Context.Action, Context.Target);
+                ReloadDataGridView();
+            }            
         }
     }
 }
