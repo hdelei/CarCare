@@ -61,6 +61,8 @@ namespace CarCare
             ReloadDataGridView();            
 
             dgvMain.AllowUserToAddRows = false;
+
+            TSOpenVehicle.PerformClick();
         }
 
         private void ReloadDataGridView()
@@ -255,6 +257,16 @@ namespace CarCare
                 txt.PersistsData(Context.Action, Context.Target);
                 ReloadDataGridView();
             }            
+        }
+
+        private void TSOpenVehicle_Click(object sender, EventArgs e)
+        {
+            VehicleForm vehicleForm = new VehicleForm
+            {
+                //Opacity = .85,
+                Size = this.Size
+            };
+            vehicleForm.ShowDialog();
         }
     }
 }

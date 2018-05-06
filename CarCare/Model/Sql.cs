@@ -27,16 +27,21 @@ namespace CarCare.Model
         }
 
         /// <summary>
-        /// Select database with current vehicle id
+        /// Select database with current vehicle id or providing custom 
         /// </summary>
         /// <returns>Datatable with database information</returns>
-        public DataTable SelectVehicle()
-        {            
-            query = "SELECT * FROM Vehicle WHERE id = "+ dict["id"] +";";
+        /// <param name="customQuery">type: string. Optional custom query</param>
+        public DataTable SelectVehicle(string customQuery = null)
+        {
+            if (string.IsNullOrEmpty(customQuery))
+                query = "SELECT * FROM Vehicle WHERE id = " + dict["id"] + ";";
+            else
+                query = customQuery;
+
             //conn = new Connection();
             conn.Execute(query);
             return conn.DtTable;            
-        }
+        }        
 
         /// <summary>
         /// Select database with current service id

@@ -180,6 +180,7 @@
             this.TSOpenVehicle.Name = "TSOpenVehicle";
             this.TSOpenVehicle.Size = new System.Drawing.Size(180, 22);
             this.TSOpenVehicle.Text = "Abrir";
+            this.TSOpenVehicle.Click += new System.EventHandler(this.TSOpenVehicle_Click);
             // 
             // menuVehicleEdit
             // 

@@ -113,6 +113,14 @@ namespace CarCare.Controller
             return newDtService;            
         }
 
+        public DataTable RetrieveAllVehicles()
+        {
+            Sql sql = new Sql(vehicle);
+            string query = "SELECT * FROM Vehicle;";
+            DataTable dtVehicle = sql.SelectVehicle(query);
+            return dtVehicle;
+        }
+
         private void UpdateVehicle(DataTable dtVehicle)
         {
             vehicle["id"] = dtVehicle.Rows[0][0].ToString();
