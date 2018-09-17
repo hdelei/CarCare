@@ -65,7 +65,7 @@ namespace CarCare.Controller
         public int ServiceID { get => serviceID; set => serviceID = value; }
 
         /// <summary>
-        /// Requests operations in a database
+        /// Request operations in the database
         /// </summary>
         /// <param name="queryType"> 1 = insert, 2 = update, 3 = delete</param>
         /// <param name="objType">1 = vehicle, 2 = service</param>

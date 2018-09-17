@@ -13,13 +13,19 @@ namespace CarCare.Controller
     class DynamicButton
     {
         List<Button> buttonList = new List<Button>();
-        Control[] controls;        
+        Control[] controls;
+        Label formLabel;
 
         public List<Button> ButtonList { get => buttonList; }
         public Control[] Controls { get => controls; }
 
+        public DynamicButton(Label formLabel)
+        {
+            this.formLabel = formLabel;
+        }
+
         /// <summary>
-        /// Creates a buttons list
+        /// Create a button list
         /// </summary>
         /// <param name="dt">Vehicle DataTable</param>
         public void CreateButtons(DataTable dt)
@@ -87,10 +93,11 @@ namespace CarCare.Controller
             bt.Margin = new Padding(2, 2, 0, 0);
 
             bt.AccessibleName = vehicle[2] + vehicle[0];
+
             bt.Click += (s, e) =>
             {
-                //TODO: Create the method of the button here
-                MessageBox.Show(bt.Name, bt.AccessibleName);
+                //TODO: Create the method of the button here                
+                UpdateButton(bt, vehicle[0]);                
             };
 
             return bt;
@@ -108,6 +115,13 @@ namespace CarCare.Controller
                 graphics.DrawImage(img, 0, 0, newImage.Width / 2, newImage.Height / 2);
 
             return newImage;
-        }        
+        }   
+        
+        private void UpdateButton(Button bt, string id)
+        {
+            //formLabel.Text = bt.AccessibleName;
+            LastDynamicButton.Button = bt;
+            LastDynamicButton.DbId = id;
+        }
     }
 }
