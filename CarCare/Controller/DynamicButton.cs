@@ -77,6 +77,7 @@ namespace CarCare.Controller
 
             Button bt = new Button
             {
+                Name = vehicle[0],
                 FlatStyle = FlatStyle.Flat,
                 Image = img,
                 Text = btText,
@@ -94,11 +95,7 @@ namespace CarCare.Controller
 
             bt.AccessibleName = vehicle[2] + vehicle[0];
 
-            bt.Click += (s, e) =>
-            {
-                //TODO: Create the method of the button here                
-                UpdateButton(bt, vehicle[0]);                
-            };
+            bt.Click += (s, e) => { UpdateButton(bt, vehicle[0]); };
 
             return bt;
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,12 @@ namespace CarCare
     public partial class VehicleForm : Form
     {
         DynamicButton dn;
+        int vehicleId;
 
-        public VehicleForm()
+        public VehicleForm(int vehicleId)
         {
-            InitializeComponent();            
+            InitializeComponent();
+            this.vehicleId = vehicleId;
             dn = new DynamicButton(lblID);
         }
 
@@ -26,12 +29,19 @@ namespace CarCare
         {
             ShareControls();           
 
-            Text txt = new Text(0, 0);
-            DataTable dt = txt.RetrieveAllVehicles();           
+            //I must to start with the desired vehicle in the new text() object
+            Text txt = new Text(vehicleId, 0);
+            DataTable dt = txt.RetrieveAllVehicles();
+
+            //Debug.WriteLine(txt.Vehicle["model"]);
             
             dn.CreateButtons(dt);            
             flowLayoutPanel1.Controls.AddRange(dn.Controls);
-            
+
+            if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
+            {
+                currentButton.PerformClick();
+            }
         }
 
         /// <summary>

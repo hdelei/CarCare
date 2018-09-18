@@ -261,7 +261,7 @@ namespace CarCare
 
         private void TSOpenVehicle_Click(object sender, EventArgs e)
         {
-            VehicleForm vehicleForm = new VehicleForm
+            VehicleForm vehicleForm = new VehicleForm(txt.VehicleID)
             {
                 //Opacity = .85,
                 Size = this.Size
