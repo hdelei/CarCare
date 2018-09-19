@@ -261,12 +261,28 @@ namespace CarCare
 
         private void TSOpenVehicle_Click(object sender, EventArgs e)
         {
+            OpenVehicleForm("open");
+        }
+
+        private void OpenVehicleForm(string action)
+        {
             VehicleForm vehicleForm = new VehicleForm(txt.VehicleID)
             {
                 //Opacity = .85,
+                AccessibleName = action,
                 Size = this.Size
             };
             vehicleForm.ShowDialog();
+        }
+
+        private void TSNewVehicle_Click(object sender, EventArgs e)
+        {
+            OpenVehicleForm("new");
+        }
+
+        private void MenuVehicleEdit_Click(object sender, EventArgs e)
+        {
+            OpenVehicleForm("edit");
         }
     }
 }

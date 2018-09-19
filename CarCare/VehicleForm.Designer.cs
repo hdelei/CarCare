@@ -42,6 +42,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.panelControls = new System.Windows.Forms.Panel();
+            this.panelControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -66,7 +68,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(81, 419);
+            this.lblID.Location = new System.Drawing.Point(82, 11);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(13, 13);
             this.lblID.TabIndex = 2;
@@ -74,28 +76,28 @@
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(78, 448);
+            this.txtModel.Location = new System.Drawing.Point(79, 40);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(195, 20);
-            this.txtModel.TabIndex = 3;
+            this.txtModel.TabIndex = 0;
             // 
             // txtManufacturer
             // 
-            this.txtManufacturer.Location = new System.Drawing.Point(78, 520);
+            this.txtManufacturer.Location = new System.Drawing.Point(79, 112);
             this.txtManufacturer.Name = "txtManufacturer";
             this.txtManufacturer.Size = new System.Drawing.Size(195, 20);
             this.txtManufacturer.TabIndex = 3;
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(397, 448);
+            this.txtYear.Location = new System.Drawing.Point(398, 40);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(98, 20);
             this.txtYear.TabIndex = 3;
             // 
             // txtPlate
             // 
-            this.txtPlate.Location = new System.Drawing.Point(397, 481);
+            this.txtPlate.Location = new System.Drawing.Point(398, 73);
             this.txtPlate.Name = "txtPlate";
             this.txtPlate.Size = new System.Drawing.Size(98, 20);
             this.txtPlate.TabIndex = 3;
@@ -103,7 +105,7 @@
             // lblIDCaption
             // 
             this.lblIDCaption.AutoSize = true;
-            this.lblIDCaption.Location = new System.Drawing.Point(12, 419);
+            this.lblIDCaption.Location = new System.Drawing.Point(13, 11);
             this.lblIDCaption.Name = "lblIDCaption";
             this.lblIDCaption.Size = new System.Drawing.Size(21, 13);
             this.lblIDCaption.TabIndex = 4;
@@ -112,7 +114,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 451);
+            this.label1.Location = new System.Drawing.Point(13, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 4;
@@ -121,7 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 487);
+            this.label2.Location = new System.Drawing.Point(13, 79);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 13);
             this.label2.TabIndex = 4;
@@ -139,7 +141,7 @@
             "Balão",
             "Submarino",
             "Helicóptero"});
-            this.cbType.Location = new System.Drawing.Point(78, 483);
+            this.cbType.Location = new System.Drawing.Point(79, 75);
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(195, 21);
             this.cbType.TabIndex = 5;
@@ -148,7 +150,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 524);
+            this.label3.Location = new System.Drawing.Point(13, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 4;
@@ -157,7 +159,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(346, 452);
+            this.label4.Location = new System.Drawing.Point(347, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 4;
@@ -166,36 +168,45 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(346, 484);
+            this.label5.Location = new System.Drawing.Point(347, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Placa";
+            // 
+            // panelControls
+            // 
+            this.panelControls.Controls.Add(this.cbType);
+            this.panelControls.Controls.Add(this.txtYear);
+            this.panelControls.Controls.Add(this.lblID);
+            this.panelControls.Controls.Add(this.txtModel);
+            this.panelControls.Controls.Add(this.txtManufacturer);
+            this.panelControls.Controls.Add(this.txtPlate);
+            this.panelControls.Controls.Add(this.label3);
+            this.panelControls.Controls.Add(this.label2);
+            this.panelControls.Controls.Add(this.label5);
+            this.panelControls.Controls.Add(this.label4);
+            this.panelControls.Controls.Add(this.label1);
+            this.panelControls.Controls.Add(this.lblIDCaption);
+            this.panelControls.Location = new System.Drawing.Point(3, 410);
+            this.panelControls.Name = "panelControls";
+            this.panelControls.Size = new System.Drawing.Size(594, 158);
+            this.panelControls.TabIndex = 6;
             // 
             // VehicleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 580);
-            this.Controls.Add(this.cbType);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblIDCaption);
-            this.Controls.Add(this.txtPlate);
-            this.Controls.Add(this.txtYear);
-            this.Controls.Add(this.txtManufacturer);
-            this.Controls.Add(this.txtModel);
-            this.Controls.Add(this.lblID);
+            this.Controls.Add(this.panelControls);
             this.Controls.Add(this.Add);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "VehicleForm";
             this.Text = "VehicleForm";
             this.Load += new System.EventHandler(this.VehicleForm_Load);
+            this.panelControls.ResumeLayout(false);
+            this.panelControls.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -215,5 +226,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panelControls;
     }
 }

@@ -174,6 +174,7 @@
             this.TSNewVehicle.Name = "TSNewVehicle";
             this.TSNewVehicle.Size = new System.Drawing.Size(180, 22);
             this.TSNewVehicle.Text = "Novo";
+            this.TSNewVehicle.Click += new System.EventHandler(this.TSNewVehicle_Click);
             // 
             // TSOpenVehicle
             // 
@@ -187,6 +188,7 @@
             this.menuVehicleEdit.Name = "menuVehicleEdit";
             this.menuVehicleEdit.Size = new System.Drawing.Size(180, 22);
             this.menuVehicleEdit.Text = "Editar";
+            this.menuVehicleEdit.Click += new System.EventHandler(this.MenuVehicleEdit_Click);
             // 
             // menuRecentVehicle
             // 

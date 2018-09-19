@@ -15,33 +15,34 @@ namespace CarCare
 {
     public partial class VehicleForm : Form
     {
-        DynamicButton dn;
+        DynamicButton dynButton;
         int vehicleId;
 
         public VehicleForm(int vehicleId)
         {
             InitializeComponent();
             this.vehicleId = vehicleId;
-            dn = new DynamicButton(lblID);
+            dynButton = new DynamicButton(lblID);
         }
 
         private void VehicleForm_Load(object sender, EventArgs e)
         {
+            ActiveControl = txtModel;
+
             ShareControls();           
-
-            //I must to start with the desired vehicle in the new text() object
-            Text txt = new Text(vehicleId, 0);
-            DataTable dt = txt.RetrieveAllVehicles();
-
-            //Debug.WriteLine(txt.Vehicle["model"]);
             
-            dn.CreateButtons(dt);            
-            flowLayoutPanel1.Controls.AddRange(dn.Controls);
+            Text txt = new Text(vehicleId, 0);
+            DataTable dt = txt.RetrieveAllVehicles();           
+            
+            dynButton.CreateButtons(dt);            
+            flowLayoutPanel1.Controls.AddRange(dynButton.Controls);
 
             if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
             {
                 currentButton.PerformClick();
             }
+
+            SetInitialContext();
         }
 
         /// <summary>
@@ -70,10 +71,68 @@ namespace CarCare
                 "FMH0842",
                 "2014" });
 
-            dn.CreateOneButton(test);
+            dynButton.CreateOneButton(test);
 
-            flowLayoutPanel1.Controls.AddRange(dn.Controls);            
+            flowLayoutPanel1.Controls.AddRange(dynButton.Controls);            
         }
-        
+
+        private void SetInitialContext()
+        {
+            //1 open the vehicle
+            //Textboxes disabled
+            //enabled icons click
+
+            //2 edit the vehicle
+            //Controls enabled and editabled
+
+            //3 new vehicle
+            //No Icon selected
+            //Textboxes empty
+            switch (this.AccessibleName)
+            {
+                case "open":
+                    LockControls();
+                    Debug.WriteLine(AccessibleName);
+                    break;
+                case "edit":
+                    txtModel.Focus();
+                    Debug.WriteLine(AccessibleName);
+                    break;
+                default:
+                    ClearText();
+                    Debug.WriteLine(AccessibleName);
+                    break;
+            }
+        }
+
+        private void LockControls()
+        {
+            foreach (Control item in panelControls.Controls)
+            {
+                item.Enabled = false;
+            }
+        }
+
+        private void UnlockControls()
+        {
+            foreach (Control item in panelControls.Controls)
+            {
+                item.Enabled = true;
+            }
+        }
+
+        private void ClearText()
+        {
+            foreach (Control item in panelControls.Controls)
+            {
+                if (item is TextBox)
+                {
+                    item.Text = "";
+                }
+            }
+            txtModel.Focus();
+        }
+
+
     }
 }
