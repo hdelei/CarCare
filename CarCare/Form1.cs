@@ -284,5 +284,7 @@ namespace CarCare
         {
             OpenVehicleForm("edit");
         }
+
+        private void TSAppExit_Click(object sender, EventArgs e) => Close();
     }
 }

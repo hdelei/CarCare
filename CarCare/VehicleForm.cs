@@ -18,15 +18,20 @@ namespace CarCare
         DynamicButton dynButton;
         int vehicleId;
 
+        public delegate void CloseDelegate();
+
         public VehicleForm(int vehicleId)
         {
             InitializeComponent();
-            this.vehicleId = vehicleId;
-            dynButton = new DynamicButton(lblID);
+            this.vehicleId = vehicleId;            
+            dynButton = new DynamicButton(lblID, this);
         }
 
         private void VehicleForm_Load(object sender, EventArgs e)
         {
+
+            Context.VehicleFormContext = AccessibleName;
+
             ActiveControl = txtModel;
 
             ShareControls();           
@@ -37,10 +42,12 @@ namespace CarCare
             dynButton.CreateButtons(dt);            
             flowLayoutPanel1.Controls.AddRange(dynButton.Controls);
 
-            if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
-            {
-                currentButton.PerformClick();
-            }
+
+
+            //if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
+            //{
+            //    //currentButton.PerformClick();
+            //}
 
             SetInitialContext();
         }
@@ -78,6 +85,14 @@ namespace CarCare
 
         private void SetInitialContext()
         {
+            if (Context.VehicleFormContext != "open")
+            {
+                if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
+                {
+                    currentButton.PerformClick();
+                }
+            }
+            
             //1 open the vehicle
             //Textboxes disabled
             //enabled icons click
@@ -92,15 +107,15 @@ namespace CarCare
             {
                 case "open":
                     LockControls();
-                    Debug.WriteLine(AccessibleName);
+                    //Debug.WriteLine(AccessibleName);
                     break;
                 case "edit":
                     txtModel.Focus();
-                    Debug.WriteLine(AccessibleName);
+                    //Debug.WriteLine(AccessibleName);
                     break;
                 default:
                     ClearText();
-                    Debug.WriteLine(AccessibleName);
+                    //Debug.WriteLine(AccessibleName);
                     break;
             }
         }
@@ -132,7 +147,6 @@ namespace CarCare
             }
             txtModel.Focus();
         }
-
 
     }
 }

@@ -15,13 +15,15 @@ namespace CarCare.Controller
         List<Button> buttonList = new List<Button>();
         Control[] controls;
         Label formLabel;
+        Form VForm;
 
         public List<Button> ButtonList { get => buttonList; }
         public Control[] Controls { get => controls; }
 
-        public DynamicButton(Label formLabel)
+        public DynamicButton(Label formLabel, Form VForm)
         {
-            this.formLabel = formLabel;
+            this.formLabel = formLabel;            
+            this.VForm = VForm;
         }
 
         /// <summary>
@@ -95,7 +97,15 @@ namespace CarCare.Controller
 
             bt.AccessibleName = vehicle[2] + vehicle[0];
 
-            bt.Click += (s, e) => { UpdateButton(bt, vehicle[0]); };
+            bt.Click += (s, e) => {
+                UpdateButton(bt, vehicle[0]);
+
+                //Just close the form when button is clicked
+                if (Context.VehicleFormContext == "open")
+                {
+                    VForm.Close();
+                }
+            };            
 
             return bt;
         }

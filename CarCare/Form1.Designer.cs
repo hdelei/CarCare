@@ -201,6 +201,7 @@
             this.TSAppExit.Name = "TSAppExit";
             this.TSAppExit.Size = new System.Drawing.Size(180, 22);
             this.TSAppExit.Text = "Sair";
+            this.TSAppExit.Click += new System.EventHandler(this.TSAppExit_Click);
             // 
             // serviçoToolStripMenuItem
             // 
