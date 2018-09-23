@@ -15,15 +15,13 @@ namespace CarCare
     public partial class Form1 : Form
     {        
         static int vehicleID = Properties.Settings.Default.vehicleID;
-        static int serviceID = Properties.Settings.Default.vehicleID;
+        static int serviceID = Properties.Settings.Default.serviceID;
 
         const byte VEHICLE = 1;
         const byte SERVICE = 2;
         const byte INSERT = 1;
         const byte UPDATE = 2;
         const byte DELETE = 3;
-        //byte action;//insert, update, delete
-        //byte target;//vehicle, service
 
         Text txt = new Text(VehicleID, ServiceID);
 
@@ -61,20 +59,39 @@ namespace CarCare
             ReloadDataGridView();            
 
             dgvMain.AllowUserToAddRows = false;
+            
 
-            TSOpenVehicle.PerformClick();//Only for test
+            //TSOpenVehicle.PerformClick();//Only for test
         }
 
+        /// <summary>
+        /// Reload datagridview 
+        /// </summary>
         private void ReloadDataGridView()
         {
             DataTable dt = txt.RetrieveData();
-
             dgvMain.Columns.Clear();
             dgvMain.DataSource = dt;
 
-            RenderVehicleAndService();            
+            RenderVehicleAndService();
+            foreach (DataGridViewRow row in dgvMain.Rows)
+            {                
+                if (row.Cells[0].Value != null)
+                {
+                    int index = Convert.ToInt32(row.Cells[0].Value);
+                    if (index == serviceID)
+                    {
+                        dgvMain.ClearSelection();
+                        row.Selected = true;
+                    }
+                }
+            }
         }
 
+        /// <summary>
+        /// Render the vehicle and services into the form
+        /// This method is to be used only inside ReloadDatagridView method
+        /// </summary>
         private void RenderVehicleAndService()
         {
             gbVehicle.Text = txt.Vehicle["type"];
@@ -100,10 +117,9 @@ namespace CarCare
             lblMissDays.Text = txt.Service["missing_days"];
             lblMissKm.Text = txt.Service["missing_km"];
             //Calcular missing days
-            //Calcular MissingKm
+            //Calcular MissingKm            
 
-            DgvFormat();
-
+            DgvFormat();           
         }
 
         private void DgvMain_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -125,9 +141,14 @@ namespace CarCare
             //txt.Service["missingDays"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
             //txt.Service["missingKm"] = dgvMain.Rows[e.RowIndex].Cells[3].Value.ToString();
 
+            txt.ServiceID = int.Parse(txt.Service["id"]);
+
             RenderVehicleAndService();
         }
 
+        /// <summary>
+        /// Format Datagridview
+        /// </summary>
         private void DgvFormat()
         {
             dgvMain.RowHeadersVisible = false;
@@ -263,6 +284,11 @@ namespace CarCare
             OpenVehicleForm("open");
         }
 
+        /// <summary>
+        /// Show vehicle form
+        /// </summary>
+        /// <param name="action">String action is the context for the Vehicle form behavior
+        /// Valid contexts: open, edit and new</param>
         private void OpenVehicleForm(string action)
         {
             VehicleForm vehicleForm = new VehicleForm(txt)
@@ -272,8 +298,7 @@ namespace CarCare
                 Size = this.Size
             };
             vehicleForm.ShowDialog();
-            ReloadDataGridView();
-            //Console.WriteLine("VOLTOU##############");
+            ReloadDataGridView();            
         }
 
         private void TSNewVehicle_Click(object sender, EventArgs e)
@@ -287,5 +312,12 @@ namespace CarCare
         }
 
         private void TSAppExit_Click(object sender, EventArgs e) => Close();
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.vehicleID = txt.VehicleID;
+            Properties.Settings.Default.serviceID = txt.ServiceID;
+            Properties.Settings.Default.Save();
+        }
     }
 }

@@ -172,34 +172,34 @@
             // TSNewVehicle
             // 
             this.TSNewVehicle.Name = "TSNewVehicle";
-            this.TSNewVehicle.Size = new System.Drawing.Size(180, 22);
+            this.TSNewVehicle.Size = new System.Drawing.Size(130, 22);
             this.TSNewVehicle.Text = "Novo";
             this.TSNewVehicle.Click += new System.EventHandler(this.TSNewVehicle_Click);
             // 
             // TSOpenVehicle
             // 
             this.TSOpenVehicle.Name = "TSOpenVehicle";
-            this.TSOpenVehicle.Size = new System.Drawing.Size(180, 22);
+            this.TSOpenVehicle.Size = new System.Drawing.Size(130, 22);
             this.TSOpenVehicle.Text = "Abrir";
             this.TSOpenVehicle.Click += new System.EventHandler(this.TSOpenVehicle_Click);
             // 
             // menuVehicleEdit
             // 
             this.menuVehicleEdit.Name = "menuVehicleEdit";
-            this.menuVehicleEdit.Size = new System.Drawing.Size(180, 22);
+            this.menuVehicleEdit.Size = new System.Drawing.Size(130, 22);
             this.menuVehicleEdit.Text = "Editar";
             this.menuVehicleEdit.Click += new System.EventHandler(this.MenuVehicleEdit_Click);
             // 
             // menuRecentVehicle
             // 
             this.menuRecentVehicle.Name = "menuRecentVehicle";
-            this.menuRecentVehicle.Size = new System.Drawing.Size(180, 22);
+            this.menuRecentVehicle.Size = new System.Drawing.Size(130, 22);
             this.menuRecentVehicle.Text = "Recentes";
             // 
             // TSAppExit
             // 
             this.TSAppExit.Name = "TSAppExit";
-            this.TSAppExit.Size = new System.Drawing.Size(180, 22);
+            this.TSAppExit.Size = new System.Drawing.Size(130, 22);
             this.TSAppExit.Text = "Sair";
             this.TSAppExit.Click += new System.EventHandler(this.TSAppExit_Click);
             // 
@@ -612,6 +612,7 @@
             this.MainMenuStrip = this.menuBar;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             this.menuBar.ResumeLayout(false);

@@ -24,14 +24,11 @@ namespace CarCare
         {
             InitializeComponent();                     
             dynButton = new DynamicButton(this);
-            txt = text;
-            
-        }      
-
+            txt = text;           
+        }
 
         private void VehicleForm_Load(object sender, EventArgs e)
         {
-
             Context.VehicleFormContext = AccessibleName;
 
             ActiveControl = txtModel;
