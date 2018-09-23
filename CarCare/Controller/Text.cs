@@ -10,7 +10,7 @@ using CarCare.Model;
 
 namespace CarCare.Controller
 {
-    class Text
+    public class Text
     {
         private int vehicleID, serviceID;
         
@@ -61,8 +61,24 @@ namespace CarCare.Controller
             set => service = value;
         }
 
-        public int VehicleID { get => vehicleID; set => vehicleID = value; }
-        public int ServiceID { get => serviceID; set => serviceID = value; }
+        public int VehicleID
+        {
+            get => vehicleID;
+            set
+            {
+                vehicleID = value;
+                Vehicle["id"] = value.ToString();
+            }
+        }
+        public int ServiceID
+        {
+            get => serviceID;
+            set
+            {
+                serviceID = value;
+                Service["id"] = value.ToString();
+            }
+        }
 
         /// <summary>
         /// Request operations in the database

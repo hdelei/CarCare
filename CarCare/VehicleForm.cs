@@ -16,16 +16,18 @@ namespace CarCare
     public partial class VehicleForm : Form
     {
         DynamicButton dynButton;
-        int vehicleId;
+        Text txt;
 
-        public delegate void CloseDelegate();
+        //public delegate void CloseDelegate();
 
-        public VehicleForm(int vehicleId)
+        public VehicleForm(Text text)
         {
-            InitializeComponent();
-            this.vehicleId = vehicleId;            
-            dynButton = new DynamicButton(lblID, this);
-        }
+            InitializeComponent();                     
+            dynButton = new DynamicButton(this);
+            txt = text;
+            
+        }      
+
 
         private void VehicleForm_Load(object sender, EventArgs e)
         {
@@ -34,20 +36,12 @@ namespace CarCare
 
             ActiveControl = txtModel;
 
-            ShareControls();           
+            ShareControls();
             
-            Text txt = new Text(vehicleId, 0);
-            DataTable dt = txt.RetrieveAllVehicles();           
+            //DataTable dt = txt.RetrieveAllVehicles();            
             
-            dynButton.CreateButtons(dt);            
-            flowLayoutPanel1.Controls.AddRange(dynButton.Controls);
-
-
-
-            //if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
-            //{
-            //    //currentButton.PerformClick();
-            //}
+            dynButton.CreateButtons(txt);            
+            flowLayoutPanel1.Controls.AddRange(dynButton.Controls);           
 
             SetInitialContext();
         }
@@ -86,8 +80,8 @@ namespace CarCare
         private void SetInitialContext()
         {
             if (Context.VehicleFormContext != "open")
-            {
-                if (Controls.Find(vehicleId.ToString(), true).FirstOrDefault() is Button currentButton)
+            {                
+                if (Controls.Find(txt.VehicleID.ToString(), true).FirstOrDefault() is Button currentButton)
                 {
                     currentButton.PerformClick();
                 }

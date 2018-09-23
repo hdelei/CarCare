@@ -62,7 +62,7 @@ namespace CarCare
 
             dgvMain.AllowUserToAddRows = false;
 
-            TSOpenVehicle.PerformClick();
+            TSOpenVehicle.PerformClick();//Only for test
         }
 
         private void ReloadDataGridView()
@@ -72,7 +72,7 @@ namespace CarCare
             dgvMain.Columns.Clear();
             dgvMain.DataSource = dt;
 
-            RenderVehicleAndService();
+            RenderVehicleAndService();            
         }
 
         private void RenderVehicleAndService()
@@ -247,8 +247,7 @@ namespace CarCare
 
         private void TSDeleteService_Click(object sender, EventArgs e)
         {
-            Context.SetContext(SERVICE, DELETE);
-            //TODO: create a warning message before deleting
+            Context.SetContext(SERVICE, DELETE);            
             string areYouSure = "Certeza que deseja mandar este serviço pro espaço?";
             DialogResult dr = MessageBox.Show(areYouSure, "Aviso:", MessageBoxButtons.YesNo);
 
@@ -266,13 +265,15 @@ namespace CarCare
 
         private void OpenVehicleForm(string action)
         {
-            VehicleForm vehicleForm = new VehicleForm(txt.VehicleID)
+            VehicleForm vehicleForm = new VehicleForm(txt)
             {
                 //Opacity = .85,
                 AccessibleName = action,
                 Size = this.Size
             };
             vehicleForm.ShowDialog();
+            ReloadDataGridView();
+            //Console.WriteLine("VOLTOU##############");
         }
 
         private void TSNewVehicle_Click(object sender, EventArgs e)

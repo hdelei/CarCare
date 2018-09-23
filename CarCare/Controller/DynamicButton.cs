@@ -14,15 +14,16 @@ namespace CarCare.Controller
     {
         List<Button> buttonList = new List<Button>();
         Control[] controls;
-        Label formLabel;
+        //Label formLabel;
         Form VForm;
+        Text txt;
 
         public List<Button> ButtonList { get => buttonList; }
         public Control[] Controls { get => controls; }
 
-        public DynamicButton(Label formLabel, Form VForm)
+        public DynamicButton(Form VForm)
         {
-            this.formLabel = formLabel;            
+            //this.formLabel = formLabel;            
             this.VForm = VForm;
         }
 
@@ -30,16 +31,34 @@ namespace CarCare.Controller
         /// Create a button list
         /// </summary>
         /// <param name="dt">Vehicle DataTable</param>
-        public void CreateButtons(DataTable dt)
+        private void CreateButtons(DataTable dt)
         {
             List<string> fields = new List<string>();
             foreach (DataRow row in dt.Rows)
             {
                 fields = row.ItemArray.Select(i => "" + i).ToList();
-                buttonList.Add(BuildButton(fields));                
+                buttonList.Add(BuildButton(fields));
             }
 
-            controls = ButtonList.ToArray();           
+            controls = ButtonList.ToArray();
+        }
+
+        /// <summary>
+        /// Create a list of buttons
+        /// </summary>
+        /// <param name="txt">Text object</param>
+        public void CreateButtons(Text txt)
+        {
+            this.txt = txt;
+            DataTable dt = this.txt.RetrieveAllVehicles();
+            List<string> fields = new List<string>();
+            foreach (DataRow row in dt.Rows)
+            {
+                fields = row.ItemArray.Select(i => "" + i).ToList();
+                buttonList.Add(BuildButton(fields));
+            }
+
+            controls = ButtonList.ToArray();
         }
 
         /// <summary>
@@ -98,8 +117,8 @@ namespace CarCare.Controller
             bt.AccessibleName = vehicle[2] + vehicle[0];
 
             bt.Click += (s, e) => {
-                UpdateButton(bt, vehicle[0]);
-
+                UpdateButton(bt, vehicle[0]);                
+                
                 //Just close the form when button is clicked
                 if (Context.VehicleFormContext == "open")
                 {
@@ -125,10 +144,12 @@ namespace CarCare.Controller
         }   
         
         private void UpdateButton(Button bt, string id)
-        {
-            //formLabel.Text = bt.AccessibleName;
+        {            
             LastDynamicButton.Button = bt;
             LastDynamicButton.DbId = id;
+
+            //Update the Text object
+            txt.VehicleID = int.Parse(id);
         }
     }
 }
